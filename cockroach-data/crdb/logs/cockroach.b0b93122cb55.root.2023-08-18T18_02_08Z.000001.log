@@ -1,0 +1,99 @@
+I230818 18:02:08.491969 1 util/log/clog.go:1196  [config] file created at: 2023/08/18 18:02:08
+I230818 18:02:08.491969 1 util/log/clog.go:1196  [config] running on machine: b0b93122cb55
+I230818 18:02:08.491969 1 util/log/clog.go:1196  [config] binary: CockroachDB CCL v19.2.2 (x86_64-unknown-linux-gnu, built 2019/12/11 01:33:43, go1.12.12)
+I230818 18:02:08.491969 1 util/log/clog.go:1196  [config] arguments: [/cockroach/cockroach start-single-node --insecure]
+I230818 18:02:08.491969 1 util/log/clog.go:1196  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg utf8=✓
+I230818 18:02:08.491868 1 cli/start.go:1144  logging to directory /cockroach/cockroach-data/logs
+W230818 18:02:08.496780 1 cli/start.go:1182  RUNNING IN INSECURE MODE!
+
+- Your cluster is open for any client that can access <all your IP addresses>.
+- Any user, even root, can log in without providing a password.
+- Any user, connecting as root, can read or write any data in your cluster.
+- There is no network encryption nor authentication, and thus no confidentiality.
+
+Check out how to secure your cluster: https://www.cockroachlabs.com/docs/v19.2/secure-a-cluster.html
+I230818 18:02:08.499645 1 server/status/recorder.go:599  can't read available memory from cgroups (open /sys/fs/cgroup/memory/memory.limit_in_bytes: no such file or directory), using system memory 7.7 GiB instead
+W230818 18:02:08.500161 1 cli/start.go:1052  Using the default setting for --cache (128 MiB).
+  A significantly larger value is usually needed for good performance.
+  If you have a dedicated server a reasonable setting is --cache=.25 (1.9 GiB).
+I230818 18:02:08.500837 1 server/status/recorder.go:599  can't read available memory from cgroups (open /sys/fs/cgroup/memory/memory.limit_in_bytes: no such file or directory), using system memory 7.7 GiB instead
+W230818 18:02:08.501741 1 cli/start.go:1065  Using the default setting for --max-sql-memory (128 MiB).
+  A significantly larger value is usually needed in production.
+  If you have a dedicated server a reasonable setting is --max-sql-memory=.25 (1.9 GiB).
+I230818 18:02:08.501980 1 server/status/recorder.go:599  can't read available memory from cgroups (open /sys/fs/cgroup/memory/memory.limit_in_bytes: no such file or directory), using system memory 7.7 GiB instead
+I230818 18:02:08.502129 1 cli/start.go:1196  CockroachDB CCL v19.2.2 (x86_64-unknown-linux-gnu, built 2019/12/11 01:33:43, go1.12.12)
+I230818 18:02:08.617088 1 server/status/recorder.go:599  can't read available memory from cgroups (open /sys/fs/cgroup/memory/memory.limit_in_bytes: no such file or directory), using system memory 7.7 GiB instead
+I230818 18:02:08.617246 1 server/config.go:394  system total memory: 7.7 GiB
+I230818 18:02:08.618068 1 server/config.go:396  server configuration:
+max offset             500000000
+cache size             128 MiB
+SQL memory pool size   128 MiB
+scan interval          10m0s
+scan min idle time     10ms
+scan max idle time     1s
+event log enabled      true
+I230818 18:02:08.618415 1 cli/start.go:1030  using local environment variables: COCKROACH_CHANNEL=official-docker
+I230818 18:02:08.618634 1 cli/start.go:1037  process identity: uid 0 euid 0 gid 0 egid 0
+I230818 18:02:08.618975 1 cli/start.go:644  starting cockroach node
+I230818 18:02:08.637639 14 storage/engine/rocksdb.go:622  opening rocksdb instance at "/cockroach/cockroach-data/cockroach-temp458161524"
+I230818 18:02:08.761743 14 server/server.go:928  [n?] monitoring forward clock jumps based on server.clock.forward_jump_check_enabled
+I230818 18:02:08.787502 14 storage/engine/rocksdb.go:622  opening rocksdb instance at "/cockroach/cockroach-data"
+I230818 18:02:10.943426 14 server/config.go:502  [n?] 1 storage engine initialized
+I230818 18:02:10.943526 14 server/config.go:505  [n?] RocksDB cache size: 128 MiB
+I230818 18:02:10.943574 14 server/config.go:505  [n?] store 0: RocksDB, max size 0 B, max open file limit 1043576
+W230818 18:02:10.960539 14 cli/start.go:996  neither --listen-addr nor --advertise-addr was specified.
+The server will advertise "b0b93122cb55" to other nodes, is this routable?
+
+Consider using:
+- for local-only servers:  --listen-addr=localhost
+- for multi-node clusters: --advertise-addr=<host/IP addr>
+I230818 18:02:10.966124 14 gossip/gossip.go:394  [n1] NodeDescriptor set to node_id:1 address:<network_field:"tcp" address_field:"b0b93122cb55:26257" > attrs:<> locality:<> ServerVersion:<major_val:19 minor_val:2 patch:0 unstable:0 > build_tag:"v19.2.2" started_at:1692381730963049000 cluster_name:"" sql_address:<network_field:"tcp" address_field:"b0b93122cb55:26257" > 
+W230818 18:02:11.049934 144 storage/replica_range_lease.go:554  can't determine lease status due to node liveness error: node not in the liveness table
+github.com/cockroachdb/cockroach/pkg/storage.init.ializers
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/node_liveness.go:44
+runtime.main
+	/usr/local/go/src/runtime/proc.go:188
+runtime.goexit
+	/usr/local/go/src/runtime/asm_amd64.s:1337
+W230818 18:02:11.053440 144 storage/store.go:1530  [n1,s1,r6/1:/Table/{SystemCon…-11}] could not gossip system config: [NotLeaseHolderError] r6: replica (n1,s1):1 not lease holder; lease holder unknown
+I230818 18:02:11.072612 14 server/node.go:431  [n1] initialized store [n1,s1]: disk (capacity=115 TiB, available=90 TiB, used=1.1 MiB, logicalBytes=8.5 MiB), ranges=46, leases=0, queries=0.00, writes=0.00, bytesPerReplica={p10=0.00 p25=0.00 p50=0.00 p75=402.00 p90=18763.00 pMax=8678391.00}, writesPerReplica={p10=0.00 p25=0.00 p50=0.00 p75=0.00 p90=0.00 pMax=0.00}
+I230818 18:02:11.076063 14 storage/stores.go:240  [n1] read 0 node addresses from persistent storage
+I230818 18:02:11.079195 14 server/node.go:645  [n1] connecting to gossip network to verify cluster ID...
+I230818 18:02:11.080425 14 server/node.go:665  [n1] node connected via gossip and verified as part of cluster "3d863ff5-6941-41b0-8654-215ed93297d8"
+I230818 18:02:11.082927 14 server/node.go:512  [n1] node=1: started with [<no-attributes>=/cockroach/cockroach-data] engine(s) and attributes []
+I230818 18:02:11.091198 14 server/server.go:1514  [n1] starting http server at [::]:8080 (use: b0b93122cb55:8080)
+I230818 18:02:11.091632 14 server/server.go:1521  [n1] starting grpc/postgres server at [::]:26257
+I230818 18:02:11.091750 14 server/server.go:1522  [n1] advertising CockroachDB node at b0b93122cb55:26257
+W230818 18:02:11.111486 144 storage/store.go:1530  [n1,s1,r6/1:/Table/{SystemCon…-11}] could not gossip system config: [NotLeaseHolderError] r6: replica (n1,s1):1 not lease holder; lease holder unknown
+I230818 18:02:11.216532 183 storage/node_liveness.go:474  [n1,liveness-hb] heartbeat failed on epoch increment; retrying
+I230818 18:02:11.232186 14 server/server.go:1590  [n1] done ensuring all necessary migrations have run
+I230818 18:02:11.233506 14 server/server.go:1841  [n1] serving sql connections
+I230818 18:02:11.241420 14 cli/start.go:803  [config] clusterID: 3d863ff5-6941-41b0-8654-215ed93297d8
+I230818 18:02:11.242318 14 cli/start.go:812  node startup completed:
+CockroachDB node starting at 2023-08-18 18:02:11.235151 +0000 UTC (took 2.7s)
+build:               CCL v19.2.2 @ 2019/12/11 01:33:43 (go1.12.12)
+webui:               http://b0b93122cb55:8080
+sql:                 postgresql://root@b0b93122cb55:26257?sslmode=disable
+RPC client flags:    /cockroach/cockroach <client cmd> --host=b0b93122cb55:26257 --insecure
+logs:                /cockroach/cockroach-data/logs
+temp dir:            /cockroach/cockroach-data/cockroach-temp458161524
+external I/O path:   /cockroach/cockroach-data/extern
+store[0]:            path=/cockroach/cockroach-data
+status:              restarted pre-existing node
+clusterID:           3d863ff5-6941-41b0-8654-215ed93297d8
+nodeID:              1
+I230818 18:02:11.437765 200 sql/event_log.go:130  [n1] Event: "node_restart", target: 1, info: {Descriptor:{NodeID:1 Address:b0b93122cb55:26257 Attrs: Locality: ServerVersion:19.2 BuildTag:v19.2.2 StartedAt:1692381730963049000 LocalityAddress:[] ClusterName: SQLAddress:b0b93122cb55:26257} ClusterID:3d863ff5-6941-41b0-8654-215ed93297d8 StartedAt:1692381730963049000 LastUp:1692381702095118000}
+I230818 18:02:11.441507 198 server/server_update.go:53  [n1] no need to upgrade, cluster already at the newest version
+I230818 18:02:13.432958 61 gossip/gossip.go:1531  [n1] node has connected to cluster via gossip
+I230818 18:02:13.434929 61 storage/stores.go:259  [n1] wrote 0 node addresses to persistent storage
+I230818 18:02:14.496689 1 cli/start.go:865  received signal 'terminated'
+I230818 18:02:14.497668 1 cli/start.go:930  initiating graceful shutdown of server
+I230818 18:02:14.509928 418 util/stop/stopper.go:542  [server drain process] quiescing; tasks left:
+1      [async] intent_resolver_ir_batcher
+1      [async] intent_resolver_gc_batcher
+1      [async] closedts-rangefeed-subscriber
+I230818 18:02:14.514422 418 util/stop/stopper.go:542  [server drain process] quiescing; tasks left:
+1      [async] closedts-rangefeed-subscriber
+I230818 18:02:14.519000 418 storage/engine/rocksdb.go:762  closing rocksdb instance at "/cockroach/cockroach-data/cockroach-temp458161524"
+I230818 18:02:14.536259 418 storage/engine/rocksdb.go:762  closing rocksdb instance at "/cockroach/cockroach-data"
+I230818 18:02:14.540217 1 cli/start.go:976  server drained and shutdown completed

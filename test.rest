@@ -1,0 +1,125 @@
+@host = localhost:3500
+
+
+POST http://{{host}}/v1/security/signup
+content-type: application/json
+
+{
+    "Email":"juan.navarro68@gmail.com",
+    "FamilyName": "Navarro",
+    "GivenName":"Juan",
+    "ImageURL":"https://lh3.googleusercontent.com/a/AEdFTp6fK7kniHV6u_TKMiqMy1blxuVJetbTPfdA5ASuqA=s96-c",
+    "Name":"Juan Navarro",
+     "GoogleID":"111751505227207835600",
+    "CategoryID":"4234c285-5bab-49bf-a5d7-c34ff27ee256",
+    "PermissionID":"ffb9b6a3-5c49-4b0f-90a4-2338b93154b9"
+}
+
+###
+POST http://{{host}}/v1/security/login
+content-type: application/json
+
+{
+    "Email":"juan.navarro68@gmail.com",
+    "Password":"",
+    "GoogleID":"111751505227207835600"
+}
+###
+POST http://{{host}}/v1/catalogs/tournaments
+content-type: application/json
+
+{
+   "Description" : "Torneo de tercera fuerza varonil",
+	"StartDate"  : "2023-10-02",
+	"EndDate"    : "2023-10-08",
+	"HostClubID" : "fd9b93a1-825a-4bab-b8c0-9a3299594d08",
+	"GameDuration" :  60,
+	"NumberOfCourts" : 4,
+	"Active"     :    true
+}
+
+
+### Users
+GET http://{{host}}/v1/catalogs/users
+?page=1&limit=50&CategoryID=71055687-9697-4e71-8f12-4902011e048a
+content-type: application/json
+###
+GET http://{{host}}/v1/catalogs/club
+
+###
+
+POST http://{{host}}/v1/catalgs/creategroups
+Content-Type: application/json
+
+{
+    "CategoryID": "4234c285-5bab-49bf-a5d7-c34ff27ee256",
+    "TournamentID": "0ee678be-5532-450f-883e-9a577b45652a"
+}
+###
+POST http://{{host}}/v1/catalgs/simulateenrollment
+Content-Type: application/json
+
+{
+    "CategoryID": "4234c285-5bab-49bf-a5d7-c34ff27ee256",
+    "UserCount": 34,
+    "TournamentID": "0ee678be-5532-450f-883e-9a577b45652a"
+}
+###
+GET  http://{{host}}/v1/tournament/getteams?CategoryID=4234c285-5bab-49bf-a5d7-c34ff27ee256&TournamentID=0ee678be-5532-450f-883e-9a577b45652a
+Content-Type: application/json
+
+###
+
+GET  http://{{host}}/v1/tournament/getteamsbygroup?CategoryID=4234c285-5bab-49bf-a5d7-c34ff27ee256&TournamentID=0ee678be-5532-450f-883e-9a577b45652a
+Content-Type: application/json
+
+###
+POST http://{{host}}/v1/catalogs/club
+content-type: application/json
+
+{
+	"Name":"Altium ",
+	"Description": "Altium Padel Center",
+	"Contact":"Sofi",
+	"Address": "Zona Real",
+	"Phone": "33 3234-3456"
+}
+###
+POST http://{{host}}/v1/catalogs/category
+content-type: application/json
+
+{
+    "Description":"Cuarta 3ra Varonil",
+    "Level":"3",
+    "Active":"true"
+}
+###
+GET http://{{host}}/v1/catalogs/categories?limit=-1
+content-type: application/json
+
+###
+GET http://{{host}}/v1/catalogs/tournaments?limit=-1
+content-type: application/json
+
+###
+
+GET http://{{host}}/v1/catalogs/clubs
+Content-Type: application/json
+
+###
+
+GET http://{{host}}/v1/catalogs/court
+Content-Type: application/json
+###
+POST http://{{host}}/v1/tournament/createtimeslots?TournamentID=d009aa9c-583c-4c1e-aea5-c3bcf28e0752
+Content-Type: application/json
+###
+GET http://{{host}}/v1/tournament/gettimeslots?TournamentID=d009aa9c-583c-4c1e-aea5-c3bcf28e0752&FilterDate=2023-09-10
+Content-Type: application/json
+###
+GET http://{{host}}/v1/tournament/listgames?CategoryID=5921bf12-658f-4151-baff-83670a8bdf08
+Content-Type: application/json
+###
+GET http://{{host}}/v1/tournament/enrolledteams?CategoryID=83caef22-f632-4db4-a9c7-81b29b7cedf2&TournamentID=fa0bbb6d-ad00-4139-8814-164715502591
+Content-Type: application/json
+###

@@ -1,0 +1,383 @@
+I230818 17:15:06.595991 1 util/log/clog.go:1196  [config] file created at: 2023/08/18 17:15:06
+I230818 17:15:06.595991 1 util/log/clog.go:1196  [config] running on machine: 96a5bec295a4
+I230818 17:15:06.595991 1 util/log/clog.go:1196  [config] binary: CockroachDB CCL v19.2.2 (x86_64-unknown-linux-gnu, built 2019/12/11 01:33:43, go1.12.12)
+I230818 17:15:06.595991 1 util/log/clog.go:1196  [config] arguments: [/cockroach/cockroach start-single-node --insecure]
+I230818 17:15:06.595991 1 util/log/clog.go:1196  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg utf8=✓
+I230818 17:15:06.595890 1 cli/start.go:1144  logging to directory /cockroach/cockroach-data/logs
+W230818 17:15:06.600605 1 cli/start.go:1182  RUNNING IN INSECURE MODE!
+
+- Your cluster is open for any client that can access <all your IP addresses>.
+- Any user, even root, can log in without providing a password.
+- Any user, connecting as root, can read or write any data in your cluster.
+- There is no network encryption nor authentication, and thus no confidentiality.
+
+Check out how to secure your cluster: https://www.cockroachlabs.com/docs/v19.2/secure-a-cluster.html
+I230818 17:15:06.604276 1 server/status/recorder.go:599  can't read available memory from cgroups (open /sys/fs/cgroup/memory/memory.limit_in_bytes: no such file or directory), using system memory 7.7 GiB instead
+W230818 17:15:06.604968 1 cli/start.go:1052  Using the default setting for --cache (128 MiB).
+  A significantly larger value is usually needed for good performance.
+  If you have a dedicated server a reasonable setting is --cache=.25 (1.9 GiB).
+I230818 17:15:06.605569 1 server/status/recorder.go:599  can't read available memory from cgroups (open /sys/fs/cgroup/memory/memory.limit_in_bytes: no such file or directory), using system memory 7.7 GiB instead
+W230818 17:15:06.605699 1 cli/start.go:1065  Using the default setting for --max-sql-memory (128 MiB).
+  A significantly larger value is usually needed in production.
+  If you have a dedicated server a reasonable setting is --max-sql-memory=.25 (1.9 GiB).
+I230818 17:15:06.605935 1 server/status/recorder.go:599  can't read available memory from cgroups (open /sys/fs/cgroup/memory/memory.limit_in_bytes: no such file or directory), using system memory 7.7 GiB instead
+I230818 17:15:06.606101 1 cli/start.go:1196  CockroachDB CCL v19.2.2 (x86_64-unknown-linux-gnu, built 2019/12/11 01:33:43, go1.12.12)
+I230818 17:15:06.717936 1 server/status/recorder.go:599  can't read available memory from cgroups (open /sys/fs/cgroup/memory/memory.limit_in_bytes: no such file or directory), using system memory 7.7 GiB instead
+I230818 17:15:06.718110 1 server/config.go:394  system total memory: 7.7 GiB
+I230818 17:15:06.718788 1 server/config.go:396  server configuration:
+max offset             500000000
+cache size             128 MiB
+SQL memory pool size   128 MiB
+scan interval          10m0s
+scan min idle time     10ms
+scan max idle time     1s
+event log enabled      true
+I230818 17:15:06.719126 1 cli/start.go:1030  using local environment variables: COCKROACH_CHANNEL=official-docker
+I230818 17:15:06.719305 1 cli/start.go:1037  process identity: uid 0 euid 0 gid 0 egid 0
+I230818 17:15:06.719626 1 cli/start.go:644  starting cockroach node
+I230818 17:15:06.736363 44 storage/engine/rocksdb.go:622  opening rocksdb instance at "/cockroach/cockroach-data/cockroach-temp802211204"
+I230818 17:15:06.869313 44 server/server.go:928  [n?] monitoring forward clock jumps based on server.clock.forward_jump_check_enabled
+I230818 17:15:06.894059 44 storage/engine/rocksdb.go:622  opening rocksdb instance at "/cockroach/cockroach-data"
+I230818 17:15:06.919992 44 server/config.go:502  [n?] 1 storage engine initialized
+I230818 17:15:06.920090 44 server/config.go:505  [n?] RocksDB cache size: 128 MiB
+I230818 17:15:06.920148 44 server/config.go:505  [n?] store 0: RocksDB, max size 0 B, max open file limit 1043576
+I230818 17:15:06.933317 44 server/server.go:1386  [n?] no stores bootstrapped and --join flag specified, awaiting init command or join with an already initialized node.
+I230818 17:15:06.933682 44 server/server.go:1396  [n?] **** add additional nodes by specifying --join=96a5bec295a4:26257
+W230818 17:15:06.934945 95 cli/start.go:996  neither --listen-addr nor --advertise-addr was specified.
+The server will advertise "96a5bec295a4" to other nodes, is this routable?
+
+Consider using:
+- for local-only servers:  --listen-addr=localhost
+- for multi-node clusters: --advertise-addr=<host/IP addr>
+I230818 17:15:06.991219 44 server/node.go:326  [n?] **** cluster 3d863ff5-6941-41b0-8654-215ed93297d8 has been created
+I230818 17:15:06.995239 44 gossip/gossip.go:394  [n1] NodeDescriptor set to node_id:1 address:<network_field:"tcp" address_field:"96a5bec295a4:26257" > attrs:<> locality:<> ServerVersion:<major_val:19 minor_val:2 patch:0 unstable:0 > build_tag:"v19.2.2" started_at:1692378906993554000 cluster_name:"" sql_address:<network_field:"tcp" address_field:"96a5bec295a4:26257" > 
+W230818 17:15:07.060976 148 storage/store.go:1530  [n1,s1,r6/1:/Table/{SystemCon…-11}] could not gossip system config: [NotLeaseHolderError] r6: replica (n1,s1):1 not lease holder; lease holder unknown
+I230818 17:15:07.073713 44 server/node.go:431  [n1] initialized store [n1,s1]: disk (capacity=115 TiB, available=90 TiB, used=73 KiB, logicalBytes=11 KiB), ranges=24, leases=0, queries=0.00, writes=0.00, bytesPerReplica={p10=0.00 p25=0.00 p50=0.00 p75=0.00 p90=166.00 pMax=9955.00}, writesPerReplica={p10=0.00 p25=0.00 p50=0.00 p75=0.00 p90=0.00 pMax=0.00}
+I230818 17:15:07.077576 44 storage/stores.go:240  [n1] read 0 node addresses from persistent storage
+I230818 17:15:07.080612 44 server/node.go:645  [n1] connecting to gossip network to verify cluster ID...
+I230818 17:15:07.081740 44 server/node.go:665  [n1] node connected via gossip and verified as part of cluster "3d863ff5-6941-41b0-8654-215ed93297d8"
+I230818 17:15:07.084849 44 server/node.go:512  [n1] node=1: started with [<no-attributes>=/cockroach/cockroach-data] engine(s) and attributes []
+I230818 17:15:07.094186 44 server/server.go:1514  [n1] starting http server at [::]:8080 (use: 96a5bec295a4:8080)
+I230818 17:15:07.094347 44 server/server.go:1521  [n1] starting grpc/postgres server at [::]:26257
+I230818 17:15:07.094645 44 server/server.go:1522  [n1] advertising CockroachDB node at 96a5bec295a4:26257
+W230818 17:15:07.133688 148 storage/store.go:1530  [n1,s1,r6/1:/Table/{SystemCon…-11}] could not gossip system config: [NotLeaseHolderError] r6: replica (n1,s1):1 not lease holder; lease holder unknown
+I230818 17:15:07.399039 262 sql/event_log.go:130  [n1,intExec=optInToDiagnosticsStatReporting] Event: "set_cluster_setting", target: 0, info: {SettingName:diagnostics.reporting.enabled Value:true User:root}
+I230818 17:15:07.484603 203 sql/event_log.go:130  [n1,intExec=set-setting] Event: "set_cluster_setting", target: 0, info: {SettingName:version Value:19.2 User:root}
+I230818 17:15:07.514406 450 sql/event_log.go:130  [n1,intExec=disableNetTrace] Event: "set_cluster_setting", target: 0, info: {SettingName:trace.debug.enable Value:false User:root}
+I230818 17:15:07.577951 558 sql/event_log.go:130  [n1,intExec=initializeClusterSecret] Event: "set_cluster_setting", target: 0, info: {SettingName:cluster.secret Value:7935820f-dde1-46eb-ae29-23e226c6cd64 User:root}
+I230818 17:15:07.599829 586 sql/event_log.go:130  [n1,intExec=create-default-db] Event: "create_database", target: 50, info: {DatabaseName:defaultdb Statement:CREATE DATABASE IF NOT EXISTS defaultdb User:root}
+I230818 17:15:07.610309 612 sql/event_log.go:130  [n1,intExec=create-default-db] Event: "create_database", target: 51, info: {DatabaseName:postgres Statement:CREATE DATABASE IF NOT EXISTS postgres User:root}
+I230818 17:15:07.677310 44 server/server.go:1590  [n1] done ensuring all necessary migrations have run
+I230818 17:15:07.678043 44 server/server.go:1841  [n1] serving sql connections
+I230818 17:15:07.694531 781 sql/event_log.go:130  [n1] Event: "node_join", target: 1, info: {Descriptor:{NodeID:1 Address:96a5bec295a4:26257 Attrs: Locality: ServerVersion:19.2 BuildTag:v19.2.2 StartedAt:1692378906993554000 LocalityAddress:[] ClusterName: SQLAddress:96a5bec295a4:26257} ClusterID:3d863ff5-6941-41b0-8654-215ed93297d8 StartedAt:1692378906993554000 LastUp:1692378906993554000}
+I230818 17:15:07.701792 779 server/server_update.go:53  [n1] no need to upgrade, cluster already at the newest version
+I230818 17:15:07.738240 841 sql/event_log.go:130  [intExec=set-zone] Event: "set_zone_config", target: 0, info: {Target:RANGE default Config: Options:num_replicas = 1 User:root}
+I230818 17:15:07.751420 855 sql/event_log.go:130  [intExec=set-zone] Event: "set_zone_config", target: 1, info: {Target:DATABASE system Config: Options:num_replicas = 1 User:root}
+I230818 17:15:07.767764 830 sql/event_log.go:130  [intExec=set-zone] Event: "set_zone_config", target: 15, info: {Target:TABLE system.public.jobs Config: Options:num_replicas = 1 User:root}
+I230818 17:15:07.779964 965 sql/event_log.go:130  [intExec=set-zone] Event: "set_zone_config", target: 16, info: {Target:RANGE meta Config: Options:num_replicas = 1 User:root}
+I230818 17:15:07.792412 971 sql/event_log.go:130  [intExec=set-zone] Event: "set_zone_config", target: 17, info: {Target:RANGE system Config: Options:num_replicas = 1 User:root}
+I230818 17:15:07.805344 976 sql/event_log.go:130  [intExec=set-zone] Event: "set_zone_config", target: 22, info: {Target:RANGE liveness Config: Options:num_replicas = 1 User:root}
+I230818 17:15:07.819654 1170 sql/event_log.go:130  [intExec=set-zone] Event: "set_zone_config", target: 25, info: {Target:TABLE system.public.replication_constraint_stats Config: Options:num_replicas = 1 User:root}
+I230818 17:15:07.834748 1134 sql/event_log.go:130  [intExec=set-zone] Event: "set_zone_config", target: 27, info: {Target:TABLE system.public.replication_stats Config: Options:num_replicas = 1 User:root}
+I230818 17:15:07.835241 44 cli/start.go:737  Replication was disabled for this cluster.
+When/if adding nodes in the future, update zone configurations to increase the replication factor.
+I230818 17:15:07.837016 44 cli/start.go:803  [config] clusterID: 3d863ff5-6941-41b0-8654-215ed93297d8
+I230818 17:15:07.837211 44 cli/start.go:812  node startup completed:
+CockroachDB node starting at 2023-08-18 17:15:07.835312 +0000 UTC (took 1.2s)
+build:               CCL v19.2.2 @ 2019/12/11 01:33:43 (go1.12.12)
+webui:               http://96a5bec295a4:8080
+sql:                 postgresql://root@96a5bec295a4:26257?sslmode=disable
+RPC client flags:    /cockroach/cockroach <client cmd> --host=96a5bec295a4:26257 --insecure
+logs:                /cockroach/cockroach-data/logs
+temp dir:            /cockroach/cockroach-data/cockroach-temp802211204
+external I/O path:   /cockroach/cockroach-data/extern
+store[0]:            path=/cockroach/cockroach-data
+status:              initialized new cluster
+clusterID:           3d863ff5-6941-41b0-8654-215ed93297d8
+nodeID:              1
+I230818 17:15:08.840844 93 gossip/gossip.go:1531  [n1] node has connected to cluster via gossip
+I230818 17:15:08.841683 93 storage/stores.go:259  [n1] wrote 0 node addresses to persistent storage
+I230818 17:15:17.111373 57 server/status/runtime.go:498  [n1] runtime stats: 236 MiB RSS, 143 goroutines, 109 MiB/15 MiB/135 MiB GO alloc/idle/total, 14 MiB/17 MiB CGO alloc/total, 0.0 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (9x), 17 KiB/15 KiB (r/w)net
+I230818 17:15:20.177566 1558 storage/replica_consistency.go:229  [n1,consistencyChecker,s1,r4/1:/System{/tsd-tse}] triggering stats recomputation to resolve delta of {ContainsEstimates:true LastUpdateNanos:1692378917355584000 IntentAge:0 GCBytesAge:0 LiveBytes:-7723 LiveCount:-664 KeyBytes:-32119 KeyCount:-664 ValBytes:24396 ValCount:-664 IntentBytes:0 IntentCount:0 SysBytes:0 SysCount:0}
+I230818 17:15:27.101225 57 server/status/runtime.go:498  [n1] runtime stats: 248 MiB RSS, 141 goroutines, 79 MiB/39 MiB/136 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 230.6 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (1x), 6.9 KiB/6.9 KiB (r/w)net
+I230818 17:15:27.104688 100 storage/store.go:2364  [n1,s1] sstables (read amplification = 0):
+I230818 17:15:27.115066 100 storage/store.go:2365  [n1,s1] 
+** Compaction Stats [default] **
+Level    Files   Size     Score Read(GB)  Rn(GB) Rnp1(GB) Write(GB) Wnew(GB) Moved(GB) W-Amp Rd(MB/s) Wr(MB/s) Comp(sec) CompMergeCPU(sec) Comp(cnt) Avg(sec) KeyIn KeyDrop
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sum      0/0    0.00 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   0.0      0.0      0.0      0.00              0.00         0    0.000       0      0
+ Int      0/0    0.00 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   0.0      0.0      0.0      0.00              0.00         0    0.000       0      0
+
+** Compaction Stats [default] **
+Priority    Files   Size     Score Read(GB)  Rn(GB) Rnp1(GB) Write(GB) Wnew(GB) Moved(GB) W-Amp Rd(MB/s) Wr(MB/s) Comp(sec) CompMergeCPU(sec) Comp(cnt) Avg(sec) KeyIn KeyDrop
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Uptime(secs): 20.2 total, 20.2 interval
+Flush(GB): cumulative 0.000, interval 0.000
+AddFile(GB): cumulative 0.000, interval 0.000
+AddFile(Total Files): cumulative 0, interval 0
+AddFile(L0 Files): cumulative 0, interval 0
+AddFile(Keys): cumulative 0, interval 0
+Cumulative compaction: 0.00 GB write, 0.00 MB/s write, 0.00 GB read, 0.00 MB/s read, 0.0 seconds
+Interval compaction: 0.00 GB write, 0.00 MB/s write, 0.00 GB read, 0.00 MB/s read, 0.0 seconds
+Stalls(count): 0 level0_slowdown, 0 level0_slowdown_with_compaction, 0 level0_numfiles, 0 level0_numfiles_with_compaction, 0 stop for pending_compaction_bytes, 0 slowdown for pending_compaction_bytes, 0 memtable_compaction, 0 memtable_slowdown, interval 0 total count
+estimated_pending_compaction_bytes: 0 B
+I230818 17:15:37.104212 57 server/status/runtime.go:498  [n1] runtime stats: 250 MiB RSS, 141 goroutines, 86 MiB/34 MiB/136 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 56.9 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 3.8 KiB/3.8 KiB (r/w)net
+I230818 17:15:47.102223 57 server/status/runtime.go:498  [n1] runtime stats: 251 MiB RSS, 142 goroutines, 92 MiB/28 MiB/136 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 30.2 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.1 KiB/1.0 KiB (r/w)net
+I230818 17:15:57.102188 57 server/status/runtime.go:498  [n1] runtime stats: 252 MiB RSS, 142 goroutines, 99 MiB/22 MiB/136 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 26.3 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.4 KiB/1.4 KiB (r/w)net
+I230818 17:16:07.093258 101 gossip/gossip.go:566  [n1] gossip status (ok, 1 node)
+gossip client (0/3 cur/max conns)
+gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+gossip connectivity
+  n1 [sentinel];
+I230818 17:16:07.104528 57 server/status/runtime.go:498  [n1] runtime stats: 252 MiB RSS, 142 goroutines, 105 MiB/16 MiB/136 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 23.2 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.0 KiB/1.0 KiB (r/w)net
+I230818 17:16:17.103844 57 server/status/runtime.go:498  [n1] runtime stats: 255 MiB RSS, 141 goroutines, 113 MiB/9.3 MiB/136 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 80.0 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.0 KiB/1.0 KiB (r/w)net
+I230818 17:16:27.104471 57 server/status/runtime.go:498  [n1] runtime stats: 260 MiB RSS, 141 goroutines, 121 MiB/1.5 MiB/136 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 26.4 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.5 KiB/1.4 KiB (r/w)net
+I230818 17:16:37.104980 57 server/status/runtime.go:498  [n1] runtime stats: 266 MiB RSS, 141 goroutines, 129 MiB/58 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 23.1 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.1 KiB/1.1 KiB (r/w)net
+I230818 17:16:47.106492 57 server/status/runtime.go:498  [n1] runtime stats: 275 MiB RSS, 142 goroutines, 80 MiB/102 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 28.3 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (1x), 1.1 KiB/1.1 KiB (r/w)net
+I230818 17:16:57.106873 57 server/status/runtime.go:498  [n1] runtime stats: 275 MiB RSS, 142 goroutines, 86 MiB/96 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 24.5 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.4 KiB/1.4 KiB (r/w)net
+I230818 17:17:07.086336 101 gossip/gossip.go:566  [n1] gossip status (ok, 1 node)
+gossip client (0/3 cur/max conns)
+gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I230818 17:17:07.106307 57 server/status/runtime.go:498  [n1] runtime stats: 276 MiB RSS, 142 goroutines, 93 MiB/91 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 26.9 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.0 KiB/1.0 KiB (r/w)net
+I230818 17:17:17.107159 57 server/status/runtime.go:498  [n1] runtime stats: 276 MiB RSS, 141 goroutines, 100 MiB/85 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 46.1 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.0 KiB/1.0 KiB (r/w)net
+I230818 17:17:27.110330 57 server/status/runtime.go:498  [n1] runtime stats: 277 MiB RSS, 141 goroutines, 106 MiB/79 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 30.0 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.4 KiB/1.4 KiB (r/w)net
+I230818 17:17:37.113832 57 server/status/runtime.go:498  [n1] runtime stats: 278 MiB RSS, 141 goroutines, 112 MiB/73 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 31.5 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.1 KiB/1.0 KiB (r/w)net
+I230818 17:17:47.113818 57 server/status/runtime.go:498  [n1] runtime stats: 278 MiB RSS, 142 goroutines, 118 MiB/68 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 24.7 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.1 KiB/1.1 KiB (r/w)net
+I230818 17:17:57.117631 57 server/status/runtime.go:498  [n1] runtime stats: 280 MiB RSS, 142 goroutines, 124 MiB/62 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 25.8 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.5 KiB/1.5 KiB (r/w)net
+I230818 17:18:07.086688 101 gossip/gossip.go:566  [n1] gossip status (ok, 1 node)
+gossip client (0/3 cur/max conns)
+gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I230818 17:18:07.117346 57 server/status/runtime.go:498  [n1] runtime stats: 280 MiB RSS, 142 goroutines, 131 MiB/56 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 29.0 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.0 KiB/1.0 KiB (r/w)net
+I230818 17:18:17.119587 57 server/status/runtime.go:498  [n1] runtime stats: 282 MiB RSS, 141 goroutines, 139 MiB/47 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 47.8 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.0 KiB/1.0 KiB (r/w)net
+I230818 17:18:27.122406 57 server/status/runtime.go:498  [n1] runtime stats: 291 MiB RSS, 141 goroutines, 79 MiB/103 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 26.4 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (1x), 1.5 KiB/1.5 KiB (r/w)net
+I230818 17:18:37.127688 57 server/status/runtime.go:498  [n1] runtime stats: 291 MiB RSS, 141 goroutines, 86 MiB/97 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 25.0 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.0 KiB/1.0 KiB (r/w)net
+I230818 17:18:47.124830 57 server/status/runtime.go:498  [n1] runtime stats: 291 MiB RSS, 142 goroutines, 92 MiB/91 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 24.7 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.0 KiB/1.0 KiB (r/w)net
+I230818 17:18:57.129558 57 server/status/runtime.go:498  [n1] runtime stats: 294 MiB RSS, 146 goroutines, 99 MiB/85 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 30.0 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 6.0 KiB/6.0 KiB (r/w)net
+I230818 17:19:07.085652 101 gossip/gossip.go:566  [n1] gossip status (ok, 1 node)
+gossip client (0/3 cur/max conns)
+gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I230818 17:19:07.125918 57 server/status/runtime.go:498  [n1] runtime stats: 294 MiB RSS, 146 goroutines, 105 MiB/80 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 23.0 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.2 KiB/1.2 KiB (r/w)net
+I230818 17:19:17.127923 57 server/status/runtime.go:498  [n1] runtime stats: 294 MiB RSS, 145 goroutines, 112 MiB/74 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 54.3 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.0 KiB/1.0 KiB (r/w)net
+I230818 17:19:27.133634 57 server/status/runtime.go:498  [n1] runtime stats: 295 MiB RSS, 145 goroutines, 118 MiB/68 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 22.5 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.5 KiB/1.5 KiB (r/w)net
+I230818 17:19:37.133946 57 server/status/runtime.go:498  [n1] runtime stats: 295 MiB RSS, 145 goroutines, 124 MiB/62 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 26.3 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.2 KiB/1.2 KiB (r/w)net
+I230818 17:19:47.140221 57 server/status/runtime.go:498  [n1] runtime stats: 295 MiB RSS, 146 goroutines, 130 MiB/56 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 24.0 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.1 KiB/1.1 KiB (r/w)net
+I230818 17:19:57.144580 57 server/status/runtime.go:498  [n1] runtime stats: 295 MiB RSS, 146 goroutines, 136 MiB/50 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 29.0 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 2.1 KiB/2.5 KiB (r/w)net
+I230818 17:20:07.085558 101 gossip/gossip.go:566  [n1] gossip status (ok, 1 node)
+gossip client (0/3 cur/max conns)
+gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I230818 17:20:07.147613 57 server/status/runtime.go:498  [n1] runtime stats: 295 MiB RSS, 146 goroutines, 143 MiB/44 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 33.1 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.4 KiB/1.3 KiB (r/w)net
+I230818 17:20:17.152372 57 server/status/runtime.go:498  [n1] runtime stats: 300 MiB RSS, 145 goroutines, 81 MiB/100 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 47.2 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (1x), 1.5 KiB/1.4 KiB (r/w)net
+I230818 17:20:27.151337 57 server/status/runtime.go:498  [n1] runtime stats: 300 MiB RSS, 145 goroutines, 88 MiB/95 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 28.6 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.4 KiB/1.4 KiB (r/w)net
+I230818 17:20:37.151824 57 server/status/runtime.go:498  [n1] runtime stats: 300 MiB RSS, 145 goroutines, 94 MiB/89 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 24.8 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.2 KiB/1.2 KiB (r/w)net
+I230818 17:20:47.154360 57 server/status/runtime.go:498  [n1] runtime stats: 301 MiB RSS, 146 goroutines, 100 MiB/83 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 26.6 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.3 KiB/1.2 KiB (r/w)net
+I230818 17:20:57.153855 57 server/status/runtime.go:498  [n1] runtime stats: 301 MiB RSS, 146 goroutines, 107 MiB/78 MiB/202 MiB GO alloc/idle/total, 13 MiB/17 MiB CGO alloc/total, 22.5 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.7 KiB/1.7 KiB (r/w)net
+I230818 17:21:07.085468 101 gossip/gossip.go:566  [n1] gossip status (ok, 1 node)
+gossip client (0/3 cur/max conns)
+gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I230818 17:21:07.153115 57 server/status/runtime.go:498  [n1] runtime stats: 301 MiB RSS, 146 goroutines, 113 MiB/72 MiB/202 MiB GO alloc/idle/total, 21 MiB/25 MiB CGO alloc/total, 30.5 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.6 KiB/1.4 KiB (r/w)net
+I230818 17:21:17.154450 57 server/status/runtime.go:498  [n1] runtime stats: 301 MiB RSS, 145 goroutines, 120 MiB/66 MiB/202 MiB GO alloc/idle/total, 21 MiB/25 MiB CGO alloc/total, 50.6 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.4 KiB/1.3 KiB (r/w)net
+I230818 17:21:17.426504 3958 sql/event_log.go:130  [n1,client=172.18.0.1:60840,user=root] Event: "create_database", target: 52, info: {DatabaseName:ipadel Statement:CREATE DATABASE ipadel User:root}
+I230818 17:21:27.154844 57 server/status/runtime.go:498  [n1] runtime stats: 304 MiB RSS, 149 goroutines, 132 MiB/55 MiB/202 MiB GO alloc/idle/total, 21 MiB/25 MiB CGO alloc/total, 54.5 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 8.5 KiB/41 KiB (r/w)net
+I230818 17:21:37.154771 57 server/status/runtime.go:498  [n1] runtime stats: 305 MiB RSS, 149 goroutines, 138 MiB/49 MiB/202 MiB GO alloc/idle/total, 21 MiB/25 MiB CGO alloc/total, 28.8 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.3 KiB/1.3 KiB (r/w)net
+I230818 17:21:47.156386 57 server/status/runtime.go:498  [n1] runtime stats: 305 MiB RSS, 150 goroutines, 145 MiB/42 MiB/202 MiB GO alloc/idle/total, 21 MiB/25 MiB CGO alloc/total, 25.6 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.8 KiB/2.3 KiB (r/w)net
+I230818 17:21:57.159079 57 server/status/runtime.go:498  [n1] runtime stats: 307 MiB RSS, 150 goroutines, 80 MiB/100 MiB/202 MiB GO alloc/idle/total, 21 MiB/25 MiB CGO alloc/total, 26.5 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (1x), 1.5 KiB/1.5 KiB (r/w)net
+I230818 17:22:07.085617 101 gossip/gossip.go:566  [n1] gossip status (ok, 1 node)
+gossip client (0/3 cur/max conns)
+gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I230818 17:22:07.160723 57 server/status/runtime.go:498  [n1] runtime stats: 307 MiB RSS, 150 goroutines, 87 MiB/94 MiB/202 MiB GO alloc/idle/total, 21 MiB/25 MiB CGO alloc/total, 26.5 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.4 KiB/1.4 KiB (r/w)net
+I230818 17:22:16.066380 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_table", target: 53, info: {TableName:ipadel.public.users Statement:CREATE TABLE users (id UUID DEFAULT gen_random_uuid(), created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ, deleted_at TIMESTAMPTZ, email STRING UNIQUE, password STRING, google_id STRING, image_url STRING, name STRING, family_name STRING, given_name STRING, permission_id STRING, ranking INT8, category_id STRING, PRIMARY KEY (id)) User:root}
+I230818 17:22:16.074802 6361 storage/replica_command.go:411  [n1,split,s1,r24/1:/{Table/28-Max}] initiating a split of this range at key /Table/53 [r25] (zone config)
+I230818 17:22:16.082257 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=53 (users) version=2 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:16.111640 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_index", target: 53, info: {TableName:ipadel.public.users IndexName:idx_users_deleted_at Statement:CREATE INDEX IF NOT EXISTS idx_users_deleted_at ON users (deleted_at) User:root MutationID:1}
+I230818 17:22:16.164409 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=53 (users) version=3 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:16.193278 6309 sql/backfill.go:143  [n1,client=172.18.0.1:41808,user=root,scExec] Running backfill for "users", v=3, m=1
+I230818 17:22:16.195417 6309 storage/replica_command.go:411  [n1,s1,r25/1:/{Table/53-Max}] initiating a split of this range at key /Table/53/3 [r26] (manual)
+I230818 17:22:16.259686 6601 sql/backfill.go:1209  [n1,client=172.18.0.1:41808,user=root,scExec] validation: index users/idx_users_deleted_at row count = 0, took 13.587ms
+I230818 17:22:16.259779 6602 sql/backfill.go:1244  [n1,client=172.18.0.1:41808,user=root,scExec] validation: table users row count = 0, took 13.736ms
+I230818 17:22:16.269585 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=53 (users) version=4 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:16.300280 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root,scExec] Event: "finish_schema_change", target: 53, info: {MutationID:1}
+I230818 17:22:16.307506 6607 sql/lease.go:921  new lease: 53("users") ver=4:1692379639.384308189,0, refcount=0
+I230818 17:22:16.311178 6309 sql/lease.go:326  [n1,client=172.18.0.1:41808,user=root,scExec] waiting for 1 leases to expire: desc=[{users 53 3}]
+I230818 17:22:16.371049 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_table", target: 54, info: {TableName:ipadel.public.clubs Statement:CREATE TABLE clubs (id UUID DEFAULT gen_random_uuid(), created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ, deleted_at TIMESTAMPTZ, name STRING UNIQUE, description STRING, contact STRING, image_url STRING, address STRING, phone STRING, PRIMARY KEY (id)) User:root}
+I230818 17:22:16.374089 6750 storage/replica_command.go:411  [n1,split,s1,r26/1:/{Table/53/3-Max}] initiating a split of this range at key /Table/54 [r27] (zone config)
+I230818 17:22:16.380710 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=54 (clubs) version=2 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:16.404627 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_index", target: 54, info: {TableName:ipadel.public.clubs IndexName:idx_clubs_deleted_at Statement:CREATE INDEX IF NOT EXISTS idx_clubs_deleted_at ON clubs (deleted_at) User:root MutationID:1}
+I230818 17:22:16.439783 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=54 (clubs) version=3 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:16.467788 6309 sql/backfill.go:143  [n1,client=172.18.0.1:41808,user=root,scExec] Running backfill for "clubs", v=3, m=1
+I230818 17:22:16.468341 6309 storage/replica_command.go:411  [n1,s1,r27/1:/{Table/54-Max}] initiating a split of this range at key /Table/54/3 [r28] (manual)
+I230818 17:22:16.523070 7061 sql/backfill.go:1209  [n1,client=172.18.0.1:41808,user=root,scExec] validation: index clubs/idx_clubs_deleted_at row count = 0, took 9.235ms
+I230818 17:22:16.523282 7062 sql/backfill.go:1244  [n1,client=172.18.0.1:41808,user=root,scExec] validation: table clubs row count = 0, took 9.515ms
+I230818 17:22:16.530588 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=54 (clubs) version=4 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:16.551173 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root,scExec] Event: "finish_schema_change", target: 54, info: {MutationID:1}
+I230818 17:22:16.557065 7082 sql/lease.go:921  new lease: 54("clubs") ver=4:1692379645.041619829,0, refcount=0
+I230818 17:22:16.558451 6309 sql/lease.go:326  [n1,client=172.18.0.1:41808,user=root,scExec] waiting for 1 leases to expire: desc=[{clubs 54 3}]
+I230818 17:22:16.605438 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=54 (clubs) version=5 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:16.621094 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_table", target: 55, info: {TableName:ipadel.public.courts Statement:CREATE TABLE courts (id UUID DEFAULT gen_random_uuid(), created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ, deleted_at TIMESTAMPTZ, name STRING, indoors BOOL, club_id UUID, PRIMARY KEY (id), CONSTRAINT fk_clubs_courts FOREIGN KEY (club_id) REFERENCES clubs (id)) User:root}
+I230818 17:22:16.624030 7216 storage/replica_command.go:411  [n1,split,s1,r28/1:/{Table/54/3-Max}] initiating a split of this range at key /Table/55 [r29] (zone config)
+I230818 17:22:16.627379 7135 sql/lease.go:921  new lease: 54("clubs") ver=5:1692379645.042619829,0, refcount=0
+I230818 17:22:16.628908 6309 sql/lease.go:326  [n1,client=172.18.0.1:41808,user=root,scExec] waiting for 1 leases to expire: desc=[{clubs 54 4}]
+I230818 17:22:16.661304 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=55 (courts) version=2 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:16.683275 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=55 (courts) version=3 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:16.696441 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_index", target: 55, info: {TableName:ipadel.public.courts IndexName:idx_courts_deleted_at Statement:CREATE INDEX IF NOT EXISTS idx_courts_deleted_at ON courts (deleted_at) User:root MutationID:1}
+I230818 17:22:16.730113 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=55 (courts) version=4 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:16.756046 6309 sql/backfill.go:143  [n1,client=172.18.0.1:41808,user=root,scExec] Running backfill for "courts", v=4, m=1
+I230818 17:22:16.756601 6309 storage/replica_command.go:411  [n1,s1,r29/1:/{Table/55-Max}] initiating a split of this range at key /Table/55/3 [r30] (manual)
+I230818 17:22:16.807327 7619 sql/backfill.go:1209  [n1,client=172.18.0.1:41808,user=root,scExec] validation: index courts/idx_courts_deleted_at row count = 0, took 8.911ms
+I230818 17:22:16.807571 7620 sql/backfill.go:1244  [n1,client=172.18.0.1:41808,user=root,scExec] validation: table courts row count = 0, took 9.202ms
+I230818 17:22:16.814085 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=55 (courts) version=5 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:16.832439 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root,scExec] Event: "finish_schema_change", target: 55, info: {MutationID:1}
+I230818 17:22:16.838154 7517 sql/lease.go:921  new lease: 55("courts") ver=5:1692379636.335106644,0, refcount=0
+I230818 17:22:16.839114 6309 sql/lease.go:326  [n1,client=172.18.0.1:41808,user=root,scExec] waiting for 1 leases to expire: desc=[{courts 55 4}]
+I230818 17:22:16.890534 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_table", target: 56, info: {TableName:ipadel.public.permissions Statement:CREATE TABLE permissions (id UUID DEFAULT gen_random_uuid(), created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ, deleted_at TIMESTAMPTZ, description STRING, active BOOL, PRIMARY KEY (id)) User:root}
+I230818 17:22:16.891770 7776 storage/replica_command.go:411  [n1,split,s1,r30/1:/{Table/55/3-Max}] initiating a split of this range at key /Table/56 [r31] (zone config)
+I230818 17:22:16.899759 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=56 (permissions) version=2 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:16.913478 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_index", target: 56, info: {TableName:ipadel.public.permissions IndexName:idx_permissions_deleted_at Statement:CREATE INDEX IF NOT EXISTS idx_permissions_deleted_at ON permissions (deleted_at) User:root MutationID:1}
+I230818 17:22:16.945700 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=56 (permissions) version=3 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:16.974908 6309 sql/backfill.go:143  [n1,client=172.18.0.1:41808,user=root,scExec] Running backfill for "permissions", v=3, m=1
+I230818 17:22:16.975566 6309 storage/replica_command.go:411  [n1,s1,r31/1:/{Table/56-Max}] initiating a split of this range at key /Table/56/2 [r32] (manual)
+I230818 17:22:17.036861 8089 sql/backfill.go:1209  [n1,client=172.18.0.1:41808,user=root,scExec] validation: index permissions/idx_permissions_deleted_at row count = 0, took 8.626ms
+I230818 17:22:17.037206 8090 sql/backfill.go:1244  [n1,client=172.18.0.1:41808,user=root,scExec] validation: table permissions row count = 0, took 9.041ms
+I230818 17:22:17.043715 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=56 (permissions) version=4 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:17.062864 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root,scExec] Event: "finish_schema_change", target: 56, info: {MutationID:1}
+I230818 17:22:17.069880 6309 sql/lease.go:326  [n1,client=172.18.0.1:41808,user=root,scExec] waiting for 1 leases to expire: desc=[{permissions 56 3}]
+I230818 17:22:17.069933 8092 sql/lease.go:921  new lease: 56("permissions") ver=4:1692379646.954792107,0, refcount=0
+I230818 17:22:17.111070 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=54 (clubs) version=6 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:17.125201 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_table", target: 57, info: {TableName:ipadel.public.tournaments Statement:CREATE TABLE tournaments (id UUID DEFAULT gen_random_uuid(), created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ, deleted_at TIMESTAMPTZ, description STRING, start_date TIMESTAMPTZ, end_date TIMESTAMPTZ, host_club_id UUID, number_of_courts INT8, active BOOL, PRIMARY KEY (id), CONSTRAINT fk_tournaments_club FOREIGN KEY (host_club_id) REFERENCES clubs (id)) User:root}
+I230818 17:22:17.127463 8337 storage/replica_command.go:411  [n1,split,s1,r32/1:/{Table/56/2-Max}] initiating a split of this range at key /Table/57 [r33] (zone config)
+I230818 17:22:17.131451 8185 sql/lease.go:921  new lease: 54("clubs") ver=6:1692379645.043619829,0, refcount=0
+I230818 17:22:17.132247 6309 sql/lease.go:326  [n1,client=172.18.0.1:41808,user=root,scExec] waiting for 1 leases to expire: desc=[{clubs 54 5}]
+I230818 17:22:17.160727 57 server/status/runtime.go:498  [n1] runtime stats: 314 MiB RSS, 162 goroutines, 123 MiB/63 MiB/202 MiB GO alloc/idle/total, 21 MiB/26 MiB CGO alloc/total, 1082.5 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 6.0 KiB/5.3 KiB (r/w)net
+I230818 17:22:17.162664 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=57 (tournaments) version=2 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:17.184405 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=57 (tournaments) version=3 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:17.197126 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_index", target: 57, info: {TableName:ipadel.public.tournaments IndexName:idx_tournaments_deleted_at Statement:CREATE INDEX IF NOT EXISTS idx_tournaments_deleted_at ON tournaments (deleted_at) User:root MutationID:1}
+I230818 17:22:17.254786 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=57 (tournaments) version=4 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:17.287626 6309 sql/backfill.go:143  [n1,client=172.18.0.1:41808,user=root,scExec] Running backfill for "tournaments", v=4, m=1
+I230818 17:22:17.288290 6309 storage/replica_command.go:411  [n1,s1,r33/1:/{Table/57-Max}] initiating a split of this range at key /Table/57/3 [r34] (manual)
+I230818 17:22:17.347560 8710 sql/backfill.go:1244  [n1,client=172.18.0.1:41808,user=root,scExec] validation: table tournaments row count = 0, took 10.56ms
+I230818 17:22:17.347750 8709 sql/backfill.go:1209  [n1,client=172.18.0.1:41808,user=root,scExec] validation: index tournaments/idx_tournaments_deleted_at row count = 0, took 6.96ms
+I230818 17:22:17.354876 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=57 (tournaments) version=5 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:17.375620 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root,scExec] Event: "finish_schema_change", target: 57, info: {MutationID:1}
+I230818 17:22:17.382147 8666 sql/lease.go:921  new lease: 57("tournaments") ver=5:1692379641.413593893,0, refcount=0
+I230818 17:22:17.384305 6309 sql/lease.go:326  [n1,client=172.18.0.1:41808,user=root,scExec] waiting for 1 leases to expire: desc=[{tournaments 57 4}]
+I230818 17:22:17.434928 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_table", target: 58, info: {TableName:ipadel.public.categories Statement:CREATE TABLE categories (id UUID DEFAULT gen_random_uuid(), created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ, deleted_at TIMESTAMPTZ, description STRING, level INT8, active BOOL, PRIMARY KEY (id)) User:root}
+I230818 17:22:17.438339 8962 storage/replica_command.go:411  [n1,split,s1,r34/1:/{Table/57/3-Max}] initiating a split of this range at key /Table/58 [r35] (zone config)
+I230818 17:22:17.443938 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=58 (categories) version=2 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:17.459166 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_index", target: 58, info: {TableName:ipadel.public.categories IndexName:idx_categories_deleted_at Statement:CREATE INDEX IF NOT EXISTS idx_categories_deleted_at ON categories (deleted_at) User:root MutationID:1}
+I230818 17:22:17.493592 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=58 (categories) version=3 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:17.531288 6309 sql/backfill.go:143  [n1,client=172.18.0.1:41808,user=root,scExec] Running backfill for "categories", v=3, m=1
+I230818 17:22:17.531841 6309 storage/replica_command.go:411  [n1,s1,r35/1:/{Table/58-Max}] initiating a split of this range at key /Table/58/2 [r36] (manual)
+I230818 17:22:17.583210 9118 sql/backfill.go:1209  [n1,client=172.18.0.1:41808,user=root,scExec] validation: index categories/idx_categories_deleted_at row count = 0, took 9.016ms
+I230818 17:22:17.583526 9119 sql/backfill.go:1244  [n1,client=172.18.0.1:41808,user=root,scExec] validation: table categories row count = 0, took 9.404ms
+I230818 17:22:17.590019 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=58 (categories) version=4 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:17.610037 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root,scExec] Event: "finish_schema_change", target: 58, info: {MutationID:1}
+I230818 17:22:17.616306 9121 sql/lease.go:921  new lease: 58("categories") ver=4:1692379632.852771953,0, refcount=0
+I230818 17:22:17.616952 6309 sql/lease.go:326  [n1,client=172.18.0.1:41808,user=root,scExec] waiting for 1 leases to expire: desc=[{categories 58 3}]
+I230818 17:22:17.670572 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_table", target: 59, info: {TableName:ipadel.public.tournament_teams Statement:CREATE TABLE tournament_teams (id UUID DEFAULT gen_random_uuid(), created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ, deleted_at TIMESTAMPTZ, name STRING UNIQUE, category_id STRING, member1_id STRING, name1 STRING, ranking1 INT8, member2_id STRING, name2 STRING, ranking2 INT8, tournament_id STRING, PRIMARY KEY (id)) User:root}
+I230818 17:22:17.671592 9401 storage/replica_command.go:411  [n1,split,s1,r36/1:/{Table/58/2-Max}] initiating a split of this range at key /Table/59 [r37] (zone config)
+I230818 17:22:17.677915 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=59 (tournament_teams) version=2 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:17.692933 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_index", target: 59, info: {TableName:ipadel.public.tournament_teams IndexName:idx_tournament_teams_deleted_at Statement:CREATE INDEX IF NOT EXISTS idx_tournament_teams_deleted_at ON tournament_teams (deleted_at) User:root MutationID:1}
+I230818 17:22:17.734431 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=59 (tournament_teams) version=3 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:17.763574 6309 sql/backfill.go:143  [n1,client=172.18.0.1:41808,user=root,scExec] Running backfill for "tournament_teams", v=3, m=1
+I230818 17:22:17.764134 6309 storage/replica_command.go:411  [n1,s1,r37/1:/{Table/59-Max}] initiating a split of this range at key /Table/59/3 [r38] (manual)
+I230818 17:22:17.817355 9813 sql/backfill.go:1209  [n1,client=172.18.0.1:41808,user=root,scExec] validation: index tournament_teams/idx_tournament_teams_deleted_at row count = 0, took 9.541ms
+I230818 17:22:17.817590 9814 sql/backfill.go:1244  [n1,client=172.18.0.1:41808,user=root,scExec] validation: table tournament_teams row count = 0, took 9.849ms
+I230818 17:22:17.823822 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=59 (tournament_teams) version=4 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:17.842390 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root,scExec] Event: "finish_schema_change", target: 59, info: {MutationID:1}
+I230818 17:22:17.848721 9816 sql/lease.go:921  new lease: 59("tournament_teams") ver=4:1692379637.739083291,0, refcount=0
+I230818 17:22:17.849715 6309 sql/lease.go:326  [n1,client=172.18.0.1:41808,user=root,scExec] waiting for 1 leases to expire: desc=[{tournament_teams 59 3}]
+I230818 17:22:17.892452 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=58 (categories) version=5 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:17.893116 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=53 (users) version=5 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:17.893932 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=57 (tournaments) version=6 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:17.924165 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_table", target: 60, info: {TableName:ipadel.public.tournament_enrollments Statement:CREATE TABLE tournament_enrollments (id UUID DEFAULT gen_random_uuid(), created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ, deleted_at TIMESTAMPTZ, user_id UUID, tournament_id UUID, category_id UUID, active BOOL, PRIMARY KEY (id), CONSTRAINT fk_tournament_enrollments_category FOREIGN KEY (category_id) REFERENCES categories (id), CONSTRAINT fk_tournament_enrollments_user FOREIGN KEY (user_id) REFERENCES users (id), CONSTRAINT fk_tournament_enrollments_tournament FOREIGN KEY (tournament_id) REFERENCES tournaments (id)) User:root}
+I230818 17:22:17.931269 6309 sql/lease.go:326  [n1,client=172.18.0.1:41808,user=root,scExec] waiting for 1 leases to expire: desc=[{categories 58 4}]
+I230818 17:22:17.933548 10082 storage/replica_command.go:411  [n1,split,s1,r38/1:/{Table/59/3-Max}] initiating a split of this range at key /Table/60 [r39] (zone config)
+I230818 17:22:17.933689 10050 sql/lease.go:921  new lease: 53("users") ver=5:1692379650.583195123,0, refcount=0
+I230818 17:22:17.939555 10072 sql/lease.go:921  new lease: 57("tournaments") ver=6:1692379641.414593893,0, refcount=0
+I230818 17:22:17.946381 9825 sql/lease.go:921  new lease: 58("categories") ver=5:1692379632.853771953,0, refcount=0
+I230818 17:22:18.033389 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=60 (tournament_enrollments) version=2 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:18.071614 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=60 (tournament_enrollments) version=3 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:18.087273 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_index", target: 60, info: {TableName:ipadel.public.tournament_enrollments IndexName:idx_tournament_enrollments_deleted_at Statement:CREATE INDEX IF NOT EXISTS idx_tournament_enrollments_deleted_at ON tournament_enrollments (deleted_at) User:root MutationID:1}
+I230818 17:22:18.122718 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=60 (tournament_enrollments) version=4 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:18.152801 6309 sql/backfill.go:143  [n1,client=172.18.0.1:41808,user=root,scExec] Running backfill for "tournament_enrollments", v=4, m=1
+I230818 17:22:18.153366 6309 storage/replica_command.go:411  [n1,s1,r39/1:/{Table/60-Max}] initiating a split of this range at key /Table/60/5 [r40] (manual)
+I230818 17:22:18.203577 10318 sql/backfill.go:1209  [n1,client=172.18.0.1:41808,user=root,scExec] validation: index tournament_enrollments/idx_tournament_enrollments_deleted_at row count = 0, took 8.569ms
+I230818 17:22:18.203914 10319 sql/backfill.go:1244  [n1,client=172.18.0.1:41808,user=root,scExec] validation: table tournament_enrollments row count = 0, took 9.017ms
+I230818 17:22:18.210571 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=60 (tournament_enrollments) version=5 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:18.228960 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root,scExec] Event: "finish_schema_change", target: 60, info: {MutationID:1}
+I230818 17:22:18.235749 10496 sql/lease.go:921  new lease: 60("tournament_enrollments") ver=5:1692379652.253387294,0, refcount=0
+I230818 17:22:18.235989 6309 sql/lease.go:326  [n1,client=172.18.0.1:41808,user=root,scExec] waiting for 1 leases to expire: desc=[{tournament_enrollments 60 4}]
+I230818 17:22:18.286726 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_table", target: 61, info: {TableName:ipadel.public.tournament_groups Statement:CREATE TABLE tournament_groups (id UUID DEFAULT gen_random_uuid(), created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ, deleted_at TIMESTAMPTZ, name STRING UNIQUE, group_number INT8, category_id STRING, tournament_id STRING, PRIMARY KEY (id)) User:root}
+I230818 17:22:18.291181 10741 storage/replica_command.go:411  [n1,split,s1,r40/1:/{Table/60/5-Max}] initiating a split of this range at key /Table/61 [r41] (zone config)
+I230818 17:22:18.293742 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=61 (tournament_groups) version=2 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:18.311214 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_index", target: 61, info: {TableName:ipadel.public.tournament_groups IndexName:idx_tournament_groups_deleted_at Statement:CREATE INDEX IF NOT EXISTS idx_tournament_groups_deleted_at ON tournament_groups (deleted_at) User:root MutationID:1}
+I230818 17:22:18.381349 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=61 (tournament_groups) version=3 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:18.417999 6309 sql/backfill.go:143  [n1,client=172.18.0.1:41808,user=root,scExec] Running backfill for "tournament_groups", v=3, m=1
+I230818 17:22:18.418546 6309 storage/replica_command.go:411  [n1,s1,r41/1:/{Table/61-Max}] initiating a split of this range at key /Table/61/3 [r42] (manual)
+I230818 17:22:18.467615 10929 sql/backfill.go:1209  [n1,client=172.18.0.1:41808,user=root,scExec] validation: index tournament_groups/idx_tournament_groups_deleted_at row count = 0, took 8.885ms
+I230818 17:22:18.467927 11138 sql/backfill.go:1244  [n1,client=172.18.0.1:41808,user=root,scExec] validation: table tournament_groups row count = 0, took 9.279ms
+I230818 17:22:18.473906 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=61 (tournament_groups) version=4 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:18.491804 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root,scExec] Event: "finish_schema_change", target: 61, info: {MutationID:1}
+I230818 17:22:18.497300 11121 sql/lease.go:921  new lease: 61("tournament_groups") ver=4:1692379651.080577171,0, refcount=0
+I230818 17:22:18.502194 6309 sql/lease.go:326  [n1,client=172.18.0.1:41808,user=root,scExec] waiting for 1 leases to expire: desc=[{tournament_groups 61 3}]
+I230818 17:22:18.559853 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_table", target: 62, info: {TableName:ipadel.public.tournament_team_by_groups Statement:CREATE TABLE tournament_team_by_groups (id UUID DEFAULT gen_random_uuid(), created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ, deleted_at TIMESTAMPTZ, name STRING, group_number INT8, tournament_id UUID, category_id UUID, group_id UUID, team_id UUID, PRIMARY KEY (id)) User:root}
+I230818 17:22:18.562853 11394 storage/replica_command.go:411  [n1,split,s1,r42/1:/{Table/61/3-Max}] initiating a split of this range at key /Table/62 [r43] (zone config)
+I230818 17:22:18.569306 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=62 (tournament_team_by_groups) version=2 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:18.584625 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_index", target: 62, info: {TableName:ipadel.public.tournament_team_by_groups IndexName:idx_tournament_team_by_groups_deleted_at Statement:CREATE INDEX IF NOT EXISTS idx_tournament_team_by_groups_deleted_at ON tournament_team_by_groups (deleted_at) User:root MutationID:1}
+I230818 17:22:18.633168 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=62 (tournament_team_by_groups) version=3 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:18.663470 6309 sql/backfill.go:143  [n1,client=172.18.0.1:41808,user=root,scExec] Running backfill for "tournament_team_by_groups", v=3, m=1
+I230818 17:22:18.664056 6309 storage/replica_command.go:411  [n1,s1,r43/1:/{Table/62-Max}] initiating a split of this range at key /Table/62/2 [r44] (manual)
+I230818 17:22:18.713918 11769 sql/backfill.go:1209  [n1,client=172.18.0.1:41808,user=root,scExec] validation: index tournament_team_by_groups/idx_tournament_team_by_groups_deleted_at row count = 0, took 8.588ms
+I230818 17:22:18.714152 11770 sql/backfill.go:1244  [n1,client=172.18.0.1:41808,user=root,scExec] validation: table tournament_team_by_groups row count = 0, took 8.898ms
+I230818 17:22:18.719951 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=62 (tournament_team_by_groups) version=4 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:18.738469 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root,scExec] Event: "finish_schema_change", target: 62, info: {MutationID:1}
+I230818 17:22:18.745664 11786 sql/lease.go:921  new lease: 62("tournament_team_by_groups") ver=4:1692379631.267567292,0, refcount=0
+I230818 17:22:18.745719 6309 sql/lease.go:326  [n1,client=172.18.0.1:41808,user=root,scExec] waiting for 1 leases to expire: desc=[{tournament_team_by_groups 62 3}]
+I230818 17:22:18.796962 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_table", target: 63, info: {TableName:ipadel.public.tournament_time_slots Statement:CREATE TABLE tournament_time_slots (id UUID DEFAULT gen_random_uuid(), created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ, deleted_at TIMESTAMPTZ, tournament_id STRING, category_id STRING, description STRING, start_time TIMESTAMPTZ, end_time TIMESTAMPTZ, game_id STRING, taken BOOL, active BOOL, PRIMARY KEY (id)) User:root}
+I230818 17:22:18.798386 11887 storage/replica_command.go:411  [n1,split,s1,r44/1:/{Table/62/2-Max}] initiating a split of this range at key /Table/63 [r45] (zone config)
+I230818 17:22:18.803662 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root] publish: descID=63 (tournament_time_slots) version=2 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:18.818418 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root] Event: "create_index", target: 63, info: {TableName:ipadel.public.tournament_time_slots IndexName:idx_tournament_time_slots_deleted_at Statement:CREATE INDEX IF NOT EXISTS idx_tournament_time_slots_deleted_at ON tournament_time_slots (deleted_at) User:root MutationID:1}
+I230818 17:22:18.861908 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=63 (tournament_time_slots) version=3 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:18.888252 6309 sql/backfill.go:143  [n1,client=172.18.0.1:41808,user=root,scExec] Running backfill for "tournament_time_slots", v=3, m=1
+I230818 17:22:18.888816 6309 storage/replica_command.go:411  [n1,s1,r45/1:/{Table/63-Max}] initiating a split of this range at key /Table/63/2 [r46] (manual)
+I230818 17:22:18.940120 12414 sql/backfill.go:1209  [n1,client=172.18.0.1:41808,user=root,scExec] validation: index tournament_time_slots/idx_tournament_time_slots_deleted_at row count = 0, took 8.676ms
+I230818 17:22:18.940343 12415 sql/backfill.go:1244  [n1,client=172.18.0.1:41808,user=root,scExec] validation: table tournament_time_slots row count = 0, took 8.971ms
+I230818 17:22:18.946876 6309 sql/sqlbase/structured.go:1516  [n1,client=172.18.0.1:41808,user=root,scExec] publish: descID=63 (tournament_time_slots) version=4 mtime=1970-01-01 00:00:00 +0000 UTC
+I230818 17:22:18.965205 6309 sql/event_log.go:130  [n1,client=172.18.0.1:41808,user=root,scExec] Event: "finish_schema_change", target: 63, info: {MutationID:1}
+I230818 17:22:18.971943 12431 sql/lease.go:921  new lease: 63("tournament_time_slots") ver=4:1692379643.616379376,0, refcount=0
+I230818 17:22:18.972142 6309 sql/lease.go:326  [n1,client=172.18.0.1:41808,user=root,scExec] waiting for 1 leases to expire: desc=[{tournament_time_slots 63 3}]
+I230818 17:22:27.165199 57 server/status/runtime.go:498  [n1] runtime stats: 316 MiB RSS, 148 goroutines, 122 MiB/62 MiB/202 MiB GO alloc/idle/total, 20 MiB/26 MiB CGO alloc/total, 1735.5 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (1x), 19 KiB/37 KiB (r/w)net
+I230818 17:22:37.167972 57 server/status/runtime.go:498  [n1] runtime stats: 316 MiB RSS, 148 goroutines, 131 MiB/54 MiB/202 MiB GO alloc/idle/total, 20 MiB/26 MiB CGO alloc/total, 134.6 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 3.2 KiB/3.2 KiB (r/w)net
+I230818 17:22:47.173577 57 server/status/runtime.go:498  [n1] runtime stats: 316 MiB RSS, 149 goroutines, 138 MiB/48 MiB/202 MiB GO alloc/idle/total, 20 MiB/26 MiB CGO alloc/total, 55.7 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 4.5 KiB/4.5 KiB (r/w)net
+I230818 17:22:57.176286 57 server/status/runtime.go:498  [n1] runtime stats: 317 MiB RSS, 149 goroutines, 144 MiB/42 MiB/202 MiB GO alloc/idle/total, 20 MiB/26 MiB CGO alloc/total, 51.1 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 4.6 KiB/4.6 KiB (r/w)net
+I230818 17:23:07.085655 101 gossip/gossip.go:566  [n1] gossip status (ok, 1 node)
+gossip client (0/3 cur/max conns)
+gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I230818 17:23:07.179914 57 server/status/runtime.go:498  [n1] runtime stats: 320 MiB RSS, 149 goroutines, 155 MiB/31 MiB/202 MiB GO alloc/idle/total, 20 MiB/26 MiB CGO alloc/total, 51.5 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 15 KiB/34 KiB (r/w)net
+I230818 17:23:17.180936 57 server/status/runtime.go:498  [n1] runtime stats: 333 MiB RSS, 148 goroutines, 161 MiB/24 MiB/203 MiB GO alloc/idle/total, 20 MiB/26 MiB CGO alloc/total, 1564.3 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (1x), 1.1 KiB/1.1 KiB (r/w)net
+I230818 17:23:27.185418 57 server/status/runtime.go:498  [n1] runtime stats: 338 MiB RSS, 148 goroutines, 100 MiB/68 MiB/203 MiB GO alloc/idle/total, 20 MiB/26 MiB CGO alloc/total, 112.8 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (1x), 1.6 KiB/2.1 KiB (r/w)net
+I230818 17:23:37.191342 57 server/status/runtime.go:498  [n1] runtime stats: 338 MiB RSS, 148 goroutines, 107 MiB/63 MiB/203 MiB GO alloc/idle/total, 20 MiB/26 MiB CGO alloc/total, 24.5 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.6 KiB/1.6 KiB (r/w)net
+I230818 17:23:47.196560 57 server/status/runtime.go:498  [n1] runtime stats: 338 MiB RSS, 149 goroutines, 113 MiB/57 MiB/203 MiB GO alloc/idle/total, 20 MiB/26 MiB CGO alloc/total, 38.4 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 2.2 KiB/1.6 KiB (r/w)net
+I230818 17:23:57.198459 57 server/status/runtime.go:498  [n1] runtime stats: 339 MiB RSS, 149 goroutines, 120 MiB/51 MiB/203 MiB GO alloc/idle/total, 20 MiB/26 MiB CGO alloc/total, 24.8 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.2 KiB/1.2 KiB (r/w)net
+I230818 17:24:07.086233 101 gossip/gossip.go:566  [n1] gossip status (ok, 1 node)
+gossip client (0/3 cur/max conns)
+gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I230818 17:24:07.202983 57 server/status/runtime.go:498  [n1] runtime stats: 341 MiB RSS, 149 goroutines, 130 MiB/43 MiB/203 MiB GO alloc/idle/total, 20 MiB/26 MiB CGO alloc/total, 32.9 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 12 KiB/32 KiB (r/w)net
+I230818 17:24:17.206775 57 server/status/runtime.go:498  [n1] runtime stats: 341 MiB RSS, 148 goroutines, 137 MiB/37 MiB/203 MiB GO alloc/idle/total, 20 MiB/26 MiB CGO alloc/total, 50.5 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.1 KiB/1.1 KiB (r/w)net
+I230818 17:24:27.211371 57 server/status/runtime.go:498  [n1] runtime stats: 341 MiB RSS, 148 goroutines, 144 MiB/31 MiB/203 MiB GO alloc/idle/total, 20 MiB/26 MiB CGO alloc/total, 25.3 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.7 KiB/5.5 KiB (r/w)net
+I230818 17:24:37.213614 57 server/status/runtime.go:498  [n1] runtime stats: 342 MiB RSS, 148 goroutines, 151 MiB/25 MiB/203 MiB GO alloc/idle/total, 20 MiB/26 MiB CGO alloc/total, 26.4 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 2.0 KiB/12 KiB (r/w)net
+I230818 17:24:47.218786 57 server/status/runtime.go:498  [n1] runtime stats: 346 MiB RSS, 149 goroutines, 157 MiB/19 MiB/203 MiB GO alloc/idle/total, 20 MiB/26 MiB CGO alloc/total, 24.3 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 1.2 KiB/1.2 KiB (r/w)net
+I230818 17:24:54.606394 1 cli/start.go:865  received signal 'terminated'
+I230818 17:24:54.607332 1 cli/start.go:930  initiating graceful shutdown of server
+I230818 17:24:56.602540 17309 util/stop/stopper.go:542  [server drain process] quiescing; tasks left:
+1      [async] stats.Refresher: maybeRefreshStats
+1      [async] intent_resolver_ir_batcher
+1      [async] intent_resolver_gc_batcher
+1      [async] closedts-rangefeed-subscriber
+W230818 17:24:56.605962 63 internal/client/txn.go:520  [n1,liveness-hb] failure aborting transaction: node unavailable; try another peer; abort caused by: node unavailable; try another peer
+W230818 17:24:56.606640 63 storage/node_liveness.go:484  [n1,liveness-hb] failed node liveness heartbeat: node unavailable; try another peer
+I230818 17:24:56.606796 17309 util/stop/stopper.go:542  [server drain process] quiescing; tasks left:
+1      [async] closedts-rangefeed-subscriber
+W230818 17:24:56.606817 26 vendor/google.golang.org/grpc/clientconn.go:1206  grpc: addrConn.createTransport failed to connect to {96a5bec295a4:26257 0  <nil>}. Err :connection error: desc = "transport: failed to write client preface: io: read/write on closed pipe". Reconnecting...
+I230818 17:24:56.610966 17309 storage/engine/rocksdb.go:762  closing rocksdb instance at "/cockroach/cockroach-data/cockroach-temp802211204"
+I230818 17:24:56.622540 17309 storage/engine/rocksdb.go:762  closing rocksdb instance at "/cockroach/cockroach-data"
+I230818 17:24:56.626278 1 cli/start.go:976  server drained and shutdown completed

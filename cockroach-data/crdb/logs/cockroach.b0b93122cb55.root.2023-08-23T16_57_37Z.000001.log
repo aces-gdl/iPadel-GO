@@ -1,0 +1,1443 @@
+I230823 16:57:37.488949 1 util/log/clog.go:1196  [config] file created at: 2023/08/23 16:57:37
+I230823 16:57:37.488949 1 util/log/clog.go:1196  [config] running on machine: b0b93122cb55
+I230823 16:57:37.488949 1 util/log/clog.go:1196  [config] binary: CockroachDB CCL v19.2.2 (x86_64-unknown-linux-gnu, built 2019/12/11 01:33:43, go1.12.12)
+I230823 16:57:37.488949 1 util/log/clog.go:1196  [config] arguments: [/cockroach/cockroach start-single-node --insecure]
+I230823 16:57:37.488949 1 util/log/clog.go:1196  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg utf8=✓
+I230823 16:57:37.488833 1 cli/start.go:1144  logging to directory /cockroach/cockroach-data/logs
+W230823 16:57:37.493186 1 cli/start.go:1182  RUNNING IN INSECURE MODE!
+
+- Your cluster is open for any client that can access <all your IP addresses>.
+- Any user, even root, can log in without providing a password.
+- Any user, connecting as root, can read or write any data in your cluster.
+- There is no network encryption nor authentication, and thus no confidentiality.
+
+Check out how to secure your cluster: https://www.cockroachlabs.com/docs/v19.2/secure-a-cluster.html
+I230823 16:57:37.496061 1 server/status/recorder.go:599  can't read available memory from cgroups (open /sys/fs/cgroup/memory/memory.limit_in_bytes: no such file or directory), using system memory 7.7 GiB instead
+W230823 16:57:37.497086 1 cli/start.go:1052  Using the default setting for --cache (128 MiB).
+  A significantly larger value is usually needed for good performance.
+  If you have a dedicated server a reasonable setting is --cache=.25 (1.9 GiB).
+I230823 16:57:37.497401 1 server/status/recorder.go:599  can't read available memory from cgroups (open /sys/fs/cgroup/memory/memory.limit_in_bytes: no such file or directory), using system memory 7.7 GiB instead
+W230823 16:57:37.497546 1 cli/start.go:1065  Using the default setting for --max-sql-memory (128 MiB).
+  A significantly larger value is usually needed in production.
+  If you have a dedicated server a reasonable setting is --max-sql-memory=.25 (1.9 GiB).
+I230823 16:57:37.497798 1 server/status/recorder.go:599  can't read available memory from cgroups (open /sys/fs/cgroup/memory/memory.limit_in_bytes: no such file or directory), using system memory 7.7 GiB instead
+I230823 16:57:37.498130 1 cli/start.go:1196  CockroachDB CCL v19.2.2 (x86_64-unknown-linux-gnu, built 2019/12/11 01:33:43, go1.12.12)
+I230823 16:57:37.610928 1 server/status/recorder.go:599  can't read available memory from cgroups (open /sys/fs/cgroup/memory/memory.limit_in_bytes: no such file or directory), using system memory 7.7 GiB instead
+I230823 16:57:37.611120 1 server/config.go:394  system total memory: 7.7 GiB
+I230823 16:57:37.612040 1 server/config.go:396  server configuration:
+max offset             500000000
+cache size             128 MiB
+SQL memory pool size   128 MiB
+scan interval          10m0s
+scan min idle time     10ms
+scan max idle time     1s
+event log enabled      true
+I230823 16:57:37.612459 1 cli/start.go:1030  using local environment variables: COCKROACH_CHANNEL=official-docker
+I230823 16:57:37.612692 1 cli/start.go:1037  process identity: uid 0 euid 0 gid 0 egid 0
+I230823 16:57:37.614242 1 cli/start.go:644  starting cockroach node
+I230823 16:57:37.637090 24 storage/engine/rocksdb.go:622  opening rocksdb instance at "/cockroach/cockroach-data/cockroach-temp946543116"
+I230823 16:57:37.783067 24 server/server.go:928  [n?] monitoring forward clock jumps based on server.clock.forward_jump_check_enabled
+I230823 16:57:37.811119 24 storage/engine/rocksdb.go:622  opening rocksdb instance at "/cockroach/cockroach-data"
+I230823 16:57:41.464844 24 server/config.go:502  [n?] 1 storage engine initialized
+I230823 16:57:41.464938 24 server/config.go:505  [n?] RocksDB cache size: 128 MiB
+I230823 16:57:41.464993 24 server/config.go:505  [n?] store 0: RocksDB, max size 0 B, max open file limit 1043576
+W230823 16:57:41.483738 24 cli/start.go:996  neither --listen-addr nor --advertise-addr was specified.
+The server will advertise "b0b93122cb55" to other nodes, is this routable?
+
+Consider using:
+- for local-only servers:  --listen-addr=localhost
+- for multi-node clusters: --advertise-addr=<host/IP addr>
+fatal error: unexpected signal during runtime execution
+fatal error: unexpected signal during runtime execution
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x38261d6b08 pc=0x31a37e7]
+
+runtime stack:
+runtime.throw(0x414f1cc, 0x2a)
+	/usr/local/go/src/runtime/panic.go:617 +0x72
+runtime.sigpanic()
+	/usr/local/go/src/runtime/signal_unix.go:374 +0x4a9
+
+goroutine 117 [syscall]:
+non-Go function
+	pc=0x31a37e7
+non-Go function
+	pc=0x38794fa
+non-Go function
+	pc=0x32c0e01
+non-Go function
+	pc=0x31202f7
+non-Go function
+	pc=0x7bc99f
+runtime.cgocall(0x3120260, 0xc000ed8470, 0x0)
+	/usr/local/go/src/runtime/cgocall.go:128 +0x5b fp=0xc000ed83c8 sp=0xc000ed8390 pc=0x762d1b
+github.com/cockroachdb/cockroach/pkg/storage/engine._Cfunc_DBNewIter(0x400228efd0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	_cgo_gotypes.go:1000 +0x62 fp=0xc000ed8470 sp=0xc000ed83c8 pc=0x16d4022
+github.com/cockroachdb/cockroach/pkg/storage/engine.(*rocksDBIterator).init.func1(0x400228efd0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:2197 +0xd4 fp=0xc000ed85c0 sp=0xc000ed8470 pc=0x16ed924
+github.com/cockroachdb/cockroach/pkg/storage/engine.(*rocksDBIterator).init(0xc00052e1c0, 0x400228efd0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:2197 +0x82 fp=0xc000ed8640 sp=0xc000ed85c0 pc=0x16e03c2
+github.com/cockroachdb/cockroach/pkg/storage/engine.newRocksDBIterator(0x400228efd0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:2177 +0xc1 fp=0xc000ed86e0 sp=0xc000ed8640 pc=0x16e02d1
+github.com/cockroachdb/cockroach/pkg/storage/engine.(*RocksDB).NewIterator(0xc000492d80, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:1006 +0x7d fp=0xc000ed8780 sp=0xc000ed86e0 pc=0x16d9bbd
+github.com/cockroachdb/cockroach/pkg/storage/engine.MVCCGet(0x4a5e5c0, 0xc00081d800, 0x4a99d80, 0xc000492d80, 0xc00007b160, 0x8, 0x20, 0x0, 0x0, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/engine/mvcc.go:731 +0x1b4 fp=0xc000ed8870 sp=0xc000ed8780 pc=0x16bdf74
+github.com/cockroachdb/cockroach/pkg/storage/engine.MVCCGetProto(0x4a5e5c0, 0xc00081d800, 0x4a99d80, 0xc000492d80, 0xc00007b160, 0x8, 0x20, 0x0, 0x0, 0x4a9ac20, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/engine/mvcc.go:621 +0xd7 fp=0xc000ed8938 sp=0xc000ed8870 pc=0x16bd7e7
+github.com/cockroachdb/cockroach/pkg/storage/stateloader.StateLoader.LoadHardState(0xc00007b160, 0x3, 0x20, 0x4a5e5c0, 0xc00081d800, 0x4a99d80, 0xc000492d80, 0x0, 0x0, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/stateloader/stateloader.go:566 +0x1d7 fp=0xc000ed8a00 sp=0xc000ed8938 pc=0x17103c7
+github.com/cockroachdb/cockroach/pkg/storage.(*replicaRaftStorage).InitialState(0xc000b32800, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_raftstorage.go:63 +0x169 fp=0xc000ed8c40 sp=0xc000ed8a00 pc=0x1c23f29
+github.com/cockroachdb/cockroach/vendor/go.etcd.io/etcd/raft.newRaft(0xc000ed9198, 0xc00084d140)
+	/go/src/github.com/cockroachdb/cockroach/vendor/go.etcd.io/etcd/raft/raft.go:328 +0xf2 fp=0xc000ed9108 sp=0xc000ed8c40 pc=0x1ac8412
+github.com/cockroachdb/cockroach/vendor/go.etcd.io/etcd/raft.NewRawNode(0xc00084d198, 0xc0002990f0, 0xc000074040, 0x4a5e5c0)
+	/go/src/github.com/cockroachdb/cockroach/vendor/go.etcd.io/etcd/raft/rawnode.go:48 +0x2f fp=0xc000ed9150 sp=0xc000ed9108 pc=0x1ad5e3f
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).withRaftGroupLocked(0xc000b32800, 0x426fd01, 0x426bef8, 0xc000b5a120, 0xc000bbb860)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_raft.go:1365 +0x297 fp=0xc000ed97d0 sp=0xc000ed9150 pc=0x1c1fb57
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).maybeInitializeRaftGroup(0xc000b32800, 0x4a5e5c0, 0xc000b00840)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_init.go:266 +0x152 fp=0xc000ed9870 sp=0xc000ed97d0 pc=0x1c0e972
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).sendWithRangeID(0xc000b32800, 0x4a5e5c0, 0xc000b00840, 0x2, 0x177e1199a7ffbdc8, 0x0, 0x0, 0x0, 0x0, 0x2, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica.go:553 +0x183 fp=0xc000ed9b18 sp=0xc000ed9870 pc=0x1bde683
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).Send(0xc000b32800, 0x4a5e5c0, 0xc000b00840, 0x177e1199a7ffbdc8, 0x0, 0x0, 0x0, 0x0, 0x2, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica.go:525 +0x83 fp=0xc000ed9bd8 sp=0xc000ed9b18 pc=0x1bde4c3
+github.com/cockroachdb/cockroach/pkg/storage.(*pendingLeaseRequest).requestLeaseAsync.func2(0x4a5e5c0, 0xc000b00840)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_range_lease.go:401 +0x57b fp=0xc000ed9f68 sp=0xc000ed9bd8 pc=0x1c87f9b
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunAsyncTask.func1(0xc000c14000, 0x4a5e5c0, 0xc000b00840, 0xc00038e040, 0x35, 0x4ac8860, 0xc0003a1b20, 0xc000bb6000)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:321 +0xe6 fp=0xc000ed9fa0 sp=0xc000ed9f68 pc=0x12d3726
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_amd64.s:1337 +0x1 fp=0xc000ed9fa8 sp=0xc000ed9fa0 pc=0x7bd221
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunAsyncTask
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:316 +0x131
+
+goroutine 1 [select]:
+github.com/cockroachdb/cockroach/pkg/cli.runStart(0x70ea0c0, 0xc00020af90, 0x0, 0x1, 0xc0008afb01, 0x0, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/cli/start.go:844 +0xbcf
+github.com/cockroachdb/cockroach/pkg/cli.runStartSingleNode(0x70ea0c0, 0xc00020af90, 0x0, 0x1, 0x3bd21e0, 0xc00044e840)
+	/go/src/github.com/cockroachdb/cockroach/pkg/cli/start.go:424 +0xf5
+github.com/cockroachdb/cockroach/pkg/cli.MaybeDecorateGRPCError.func1(0x70ea0c0, 0xc00020af90, 0x0, 0x1, 0x0, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/cli/error.go:65 +0x6e
+github.com/cockroachdb/cockroach/pkg/cli.maybeShoutError.func1(0x70ea0c0, 0xc00020af90, 0x0, 0x1, 0x0, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/cli/error.go:218 +0x4d
+github.com/cockroachdb/cockroach/vendor/github.com/spf13/cobra.(*Command).execute(0x70ea0c0, 0xc00020af80, 0x1, 0x1, 0x70ea0c0, 0xc00020af80)
+	/go/src/github.com/cockroachdb/cockroach/vendor/github.com/spf13/cobra/command.go:762 +0x465
+github.com/cockroachdb/cockroach/vendor/github.com/spf13/cobra.(*Command).ExecuteC(0x70e3d00, 0x426c5a8, 0x4a5e540, 0xc000074028)
+	/go/src/github.com/cockroachdb/cockroach/vendor/github.com/spf13/cobra/command.go:852 +0x2ec
+github.com/cockroachdb/cockroach/vendor/github.com/spf13/cobra.(*Command).Execute(...)
+	/go/src/github.com/cockroachdb/cockroach/vendor/github.com/spf13/cobra/command.go:800
+github.com/cockroachdb/cockroach/pkg/cli.Run(...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/cli/cli.go:224
+github.com/cockroachdb/cockroach/pkg/cli.Main()
+	/go/src/github.com/cockroachdb/cockroach/pkg/cli/cli.go:66 +0x24e
+main.main()
+	/go/src/github.com/cockroachdb/cockroach/pkg/cmd/cockroach/main.go:26 +0x20
+
+goroutine 6 [syscall]:
+os/signal.signal_recv(0x0)
+	/usr/local/go/src/runtime/sigqueue.go:139 +0x9c
+os/signal.loop()
+	/usr/local/go/src/os/signal/signal_unix.go:23 +0x22
+created by os/signal.init.0
+	/usr/local/go/src/os/signal/signal_unix.go:29 +0x41
+
+goroutine 7 [chan receive]:
+github.com/cockroachdb/cockroach/pkg/util/log.flushDaemon()
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/log/clog.go:1223 +0xf3
+created by github.com/cockroachdb/cockroach/pkg/util/log.init.0
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/log/clog.go:625 +0x121
+
+goroutine 8 [chan receive]:
+github.com/cockroachdb/cockroach/pkg/util/log.signalFlusher()
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/log/clog.go:632 +0x126
+created by github.com/cockroachdb/cockroach/pkg/util/log.init.0
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/log/clog.go:626 +0x139
+
+goroutine 9 [select]:
+github.com/cockroachdb/cockroach/vendor/go.opencensus.io/stats/view.(*worker).start(0xc0002e4340)
+	/go/src/github.com/cockroachdb/cockroach/vendor/go.opencensus.io/stats/view/worker.go:152 +0xdd
+created by github.com/cockroachdb/cockroach/vendor/go.opencensus.io/stats/view.init.0
+	/go/src/github.com/cockroachdb/cockroach/vendor/go.opencensus.io/stats/view/worker.go:29 +0x57
+
+goroutine 14 [chan receive]:
+github.com/cockroachdb/cockroach/pkg/rpc.NewContextWithTestingKnobs.func1(0x4a5e5c0, 0xc000b5aa20)
+	/go/src/github.com/cockroachdb/cockroach/pkg/rpc/context.go:480 +0x52
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc00020b160, 0xc000c14000, 0xc0002fb5e0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 40 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc00081c180)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8fe0, 0xc000c14000, 0xc0002c8fc0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 39 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc00081c420)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8fb0, 0xc000c14000, 0xc0002c8f90)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 38 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc00045bda0, 0x0)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc00045bd90)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage/engine.(*RocksDB).syncLoop(0xc00045bc80)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:694 +0x70
+created by github.com/cockroachdb/cockroach/pkg/storage/engine.(*RocksDB).open
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:681 +0x373
+
+goroutine 22 [select]:
+github.com/cockroachdb/cockroach/pkg/util/log.(*loggingT).gcDaemon(0x7514940, 0x4a5e5c0, 0xc000b5a030)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/log/clog.go:1287 +0xdf
+created by github.com/cockroachdb/cockroach/pkg/util/log.StartGCDaemon
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/log/clog.go:650 +0x55
+
+goroutine 23 [select]:
+github.com/cockroachdb/cockroach/pkg/util/log.(*loggingT).gcDaemon(0xc000bb8000, 0x4a5e5c0, 0xc000b5a030)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/log/clog.go:1287 +0xdf
+created by github.com/cockroachdb/cockroach/pkg/util/log.NewSecondaryLogger
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/log/secondary_log.go:86 +0x2b5
+
+goroutine 24 [semacquire]:
+sync.runtime_SemacquireMutex(0xc000b32454, 0xc000abd500)
+	/usr/local/go/src/runtime/sema.go:71 +0x3d
+sync.(*RWMutex).RLock(...)
+	/usr/local/go/src/sync/rwmutex.go:50
+github.com/cockroachdb/cockroach/pkg/storage.(*storeReplicaVisitor).Visit(0xc000abd5f0, 0xc000d7be50)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:343 +0x1ac
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).Capacity(0xc0008ace00, 0x4a5e500, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:2106 +0x377
+github.com/cockroachdb/cockroach/pkg/server.(*Node).start(0xc0006f2500, 0x4a5e5c0, 0xc00081cff0, 0x4a1b600, 0xc00038c2c0, 0x4a1b600, 0xc00038c300, 0xc00032b660, 0x1, 0x1, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/server/node.go:427 +0x8fc
+github.com/cockroachdb/cockroach/pkg/server.(*Server).Start(0xc000b33000, 0x4a5e5c0, 0xc000b5a030, 0x0, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/server/server.go:1433 +0x19ef
+github.com/cockroachdb/cockroach/pkg/cli.runStart.func3.2(0xc000c14000, 0xc000010140, 0xc000302480, 0x4a5e5c0, 0xc000b5a030, 0x1, 0x1ceb7910, 0xedc783181, 0x0, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/cli/start.go:703 +0x10d
+github.com/cockroachdb/cockroach/pkg/cli.runStart.func3(0xc000010140, 0x4a5e5c0, 0xc000b5a030, 0x4ac8860, 0xc000b58000, 0xc000c14000, 0xc000302480, 0x1, 0x1ceb7910, 0xedc783181, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/cli/start.go:818 +0x12e
+created by github.com/cockroachdb/cockroach/pkg/cli.runStart
+	/go/src/github.com/cockroachdb/cockroach/pkg/cli/start.go:659 +0x9c9
+
+goroutine 15 [select]:
+github.com/cockroachdb/cockroach/pkg/gossip.newInfoStore.func1(0x4a5e5c0, 0xc000b5aa50)
+	/go/src/github.com/cockroachdb/cockroach/pkg/gossip/infostore.go:190 +0x15b
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc00020b230, 0xc000c14000, 0xc00020b210)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 41 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc0009a0ff0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9020, 0xc000c14000, 0xc0002c9010)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 42 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc0009a1020)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9090, 0xc000c14000, 0xc0002c9040)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 43 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc0004fed20)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c90d0, 0xc000c14000, 0xc0002c90c0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 44 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc0006a68d0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9130, 0xc000c14000, 0xc0002c9100)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 45 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc0006a6d20)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9180, 0xc000c14000, 0xc0002c9160)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 46 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc0006a6ff0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c91b0, 0xc000c14000, 0xc0002c91a0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 47 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc0006a70e0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c91e0, 0xc000c14000, 0xc0002c91c0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 48 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc0006a6840)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9210, 0xc000c14000, 0xc0002c91f0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 49 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc0009a0e10)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9230, 0xc000c14000, 0xc0002c9220)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 66 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc0009a0f30)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9260, 0xc000c14000, 0xc0002c9250)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 67 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc0009a0f60)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9290, 0xc000c14000, 0xc0002c9270)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 68 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc0009a0f90)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c92b0, 0xc000c14000, 0xc0002c92a0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 69 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc0009a0fc0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c92e0, 0xc000c14000, 0xc0002c92d0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 70 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*DistSQLPlanner).initRunners.func1(0x4a5e5c0, 0xc0009a0de0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/distsql_running.go:98 +0x140
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9300, 0xc000c14000, 0xc0002c92f0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 16 [select]:
+github.com/cockroachdb/cockroach/pkg/util/log.(*loggingT).gcDaemon(0xc0001e2120, 0x4a5e500, 0xc0000b7480)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/log/clog.go:1287 +0xdf
+created by github.com/cockroachdb/cockroach/pkg/util/log.NewSecondaryLogger
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/log/secondary_log.go:86 +0x2b5
+
+goroutine 82 [select]:
+github.com/cockroachdb/cockroach/pkg/util/log.(*loggingT).gcDaemon(0xc0001e2b40, 0x4a5e500, 0xc0000b7480)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/log/clog.go:1287 +0xdf
+created by github.com/cockroachdb/cockroach/pkg/util/log.NewSecondaryLogger
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/log/secondary_log.go:86 +0x2b5
+
+goroutine 83 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*LeaseManager).RefreshLeases.func1(0x4a5e5c0, 0xc0004ff3b0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/lease.go:1725 +0x370
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc00020ac20, 0xc000c14000, 0xc00081cf90)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 84 [select]:
+github.com/cockroachdb/cockroach/pkg/sql.(*LeaseManager).PeriodicallyRefreshSomeLeases.func1(0x4a5e5c0, 0xc0009a10b0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/sql/lease.go:1806 +0x257
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc00020ac40, 0xc000c14000, 0xc00020ac30)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 85 [select]:
+github.com/cockroachdb/cockroach/pkg/util/hlc.(*Clock).StartMonitoringForwardClockJumps.func1(0x426ff30, 0xc0002a2d70, 0xc000ae2150, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/hlc/hlc.go:181 +0x11b
+created by github.com/cockroachdb/cockroach/pkg/util/hlc.(*Clock).StartMonitoringForwardClockJumps
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/hlc/hlc.go:174 +0x105
+
+goroutine 71 [chan receive]:
+github.com/cockroachdb/cockroach/pkg/util/netutil.MakeServer.func2(0x4a5e5c0, 0xc00081d0b0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/netutil/net.go:107 +0x65
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c93d0, 0xc000c14000, 0xc000364180)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 72 [chan receive]:
+github.com/cockroachdb/cockroach/pkg/server.(*Server).startServeUI.func1(0x4a5e5c0, 0xc00081d0e0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/server/server.go:1792 +0x54
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c94a0, 0xc000c14000, 0xc0003641e0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 73 [IO wait]:
+internal/poll.runtime_pollWait(0x400bfbe080, 0x72, 0x0)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc000a9f918, 0x72, 0x0, 0x0, 0x40dd113)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Accept(0xc000a9f900, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:384 +0x1ba
+net.(*netFD).accept(0xc000a9f900, 0xc00007e500, 0xc000490000, 0x40025106d0)
+	/usr/local/go/src/net/fd_unix.go:238 +0x42
+net.(*TCPListener).accept(0xc00046e3f8, 0xc000483e38, 0x76c388, 0x30)
+	/usr/local/go/src/net/tcpsock_posix.go:139 +0x32
+net.(*TCPListener).Accept(0xc00046e3f8, 0x3ebbc60, 0xc000542300, 0x3bf5a40, 0x70b2b90)
+	/usr/local/go/src/net/tcpsock.go:260 +0x48
+net/http.(*Server).Serve(0xc000ece340, 0x4a465c0, 0xc00046e3f8, 0x0, 0x0)
+	/usr/local/go/src/net/http/server.go:2859 +0x22d
+github.com/cockroachdb/cockroach/pkg/server.(*Server).startServeUI.func4(0x4a5e5c0, 0xc00081d080)
+	/go/src/github.com/cockroachdb/cockroach/pkg/server/server.go:1832 +0x3f
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c94b0, 0xc000c14000, 0xc000364200)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 74 [chan receive]:
+github.com/cockroachdb/cockroach/pkg/server.(*Server).startListenRPCAndSQL.func3(0x4a5e5c0, 0xc0006a7320)
+	/go/src/github.com/cockroachdb/cockroach/pkg/server/server.go:1747 +0x7d
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9590, 0xc000c14000, 0xc0000b7980)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 75 [chan receive]:
+github.com/cockroachdb/cockroach/vendor/github.com/cockroachdb/cmux.muxListener.Accept(...)
+	/go/src/github.com/cockroachdb/cockroach/vendor/github.com/cockroachdb/cmux/cmux.go:184
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc.(*Server).Serve(0xc00045b800, 0x4a475c0, 0xc000364280, 0x0, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/server.go:587 +0x1e9
+github.com/cockroachdb/cockroach/pkg/server.(*Server).startListenRPCAndSQL.func4(0x4a5e5c0, 0xc0006a7140)
+	/go/src/github.com/cockroachdb/cockroach/pkg/server/server.go:1762 +0x46
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c95a0, 0xc000c14000, 0xc0003642a0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 76 [chan receive]:
+github.com/cockroachdb/cockroach/pkg/server.(*Server).Start.func1(0x4a5e5c0, 0xc0006a7380)
+	/go/src/github.com/cockroachdb/cockroach/pkg/server/server.go:1225 +0x7d
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c96d0, 0xc000c14000, 0xc0009a1cb0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 78 [select]:
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc.(*ccBalancerWrapper).watcher(0xc0000b7c40)
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:115 +0x110
+created by github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc.newCCBalancerWrapper
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:106 +0x16a
+
+goroutine 28 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000492ea0, 0xc000000001)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000492e90)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage/engine.(*RocksDB).syncLoop(0xc000492d80)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:694 +0x70
+created by github.com/cockroachdb/cockroach/pkg/storage/engine.(*RocksDB).open
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:681 +0x373
+
+goroutine 86 [chan receive]:
+github.com/cockroachdb/cockroach/pkg/server.(*Server).Start.func4(0x4a5e5c0, 0xc000542ed0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/server/server.go:1255 +0x54
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc00020a4a0, 0xc000c14000, 0xc000292940)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 53 [chan receive]:
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc.(*addrConn).resetTransport(0xc0004f5340)
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/clientconn.go:1107 +0x5a7
+created by github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc.(*addrConn).connect
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/clientconn.go:767 +0xb6
+
+goroutine 81 [select]:
+net.(*pipe).read(0xc000a9fb00, 0xc0008b0000, 0x8000, 0x8000, 0x0, 0x10401, 0x0)
+	/usr/local/go/src/net/pipe.go:164 +0x19b
+net.(*pipe).Read(0xc000a9fb00, 0xc0008b0000, 0x8000, 0x8000, 0xc00081d230, 0x30, 0x28)
+	/usr/local/go/src/net/pipe.go:147 +0x4d
+bufio.(*Reader).Read(0xc000966180, 0xc0003a0ff8, 0x9, 0x9, 0xc000470380, 0x4002510d98, 0x0)
+	/usr/local/go/src/bufio/bufio.go:223 +0x23e
+io.ReadAtLeast(0x49e49c0, 0xc000966180, 0xc0003a0ff8, 0x9, 0x9, 0x9, 0xcfd319, 0xc00081d230, 0xc000810004)
+	/usr/local/go/src/io/io.go:310 +0x88
+io.ReadFull(...)
+	/usr/local/go/src/io/io.go:329
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/http2.readFrameHeader(0xc0003a0ff8, 0x9, 0x9, 0x49e49c0, 0xc000966180, 0x0, 0x0, 0xc00081d230, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/vendor/golang.org/x/net/http2/frame.go:237 +0x88
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/http2.(*Framer).ReadFrame(0xc0003a0fc0, 0xc00081d230, 0xc00081d200, 0x0, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/vendor/golang.org/x/net/http2/frame.go:492 +0xa1
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport.(*http2Client).reader(0xc0005d8000)
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport/http2_client.go:1237 +0x168
+created by github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport.newHTTP2Client
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport/http2_client.go:286 +0xd15
+
+goroutine 98 [select]:
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport.(*controlBuffer).get(0xc000ed0100, 0x1, 0x0, 0x0, 0x0, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport/controlbuf.go:317 +0x104
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport.(*loopyWriter).run(0xc0009672c0, 0x0, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport/controlbuf.go:435 +0x1b6
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport.newHTTP2Client.func3(0xc0005d8000)
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport/http2_client.go:330 +0x7b
+created by github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport.newHTTP2Client
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport/http2_client.go:328 +0xeb2
+
+goroutine 25 [select]:
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport.(*controlBuffer).get(0xc000dda2c0, 0x1, 0x0, 0x0, 0x0, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport/controlbuf.go:317 +0x104
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport.(*loopyWriter).run(0xc0009676e0, 0x0, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport/controlbuf.go:435 +0x1b6
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport.newHTTP2Server.func2(0xc00045a780)
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport/http2_server.go:276 +0xcb
+created by github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport.newHTTP2Server
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport/http2_server.go:273 +0xfba
+
+goroutine 26 [select]:
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport.(*http2Server).keepalive(0xc00045a780)
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport/http2_server.go:935 +0x1ed
+created by github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport.newHTTP2Server
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport/http2_server.go:282 +0xfdf
+
+goroutine 27 [select]:
+net.(*pipe).read(0xc000a9fa80, 0xc00083a000, 0x8000, 0x8000, 0x0, 0x10401, 0x0)
+	/usr/local/go/src/net/pipe.go:164 +0x19b
+net.(*pipe).Read(0xc000a9fa80, 0xc00083a000, 0x8000, 0x8000, 0xc000686570, 0x30, 0x28)
+	/usr/local/go/src/net/pipe.go:147 +0x4d
+bufio.(*Reader).Read(0xc000469980, 0xc00020e038, 0x9, 0x9, 0xc000490000, 0x40025106d0, 0x0)
+	/usr/local/go/src/bufio/bufio.go:223 +0x23e
+io.ReadAtLeast(0x49e49c0, 0xc000469980, 0xc00020e038, 0x9, 0x9, 0x9, 0xcfd319, 0xc000686570, 0xc000680004)
+	/usr/local/go/src/io/io.go:310 +0x88
+io.ReadFull(...)
+	/usr/local/go/src/io/io.go:329
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/http2.readFrameHeader(0xc00020e038, 0x9, 0x9, 0x49e49c0, 0xc000469980, 0x0, 0x0, 0xc000686570, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/vendor/golang.org/x/net/http2/frame.go:237 +0x88
+github.com/cockroachdb/cockroach/vendor/golang.org/x/net/http2.(*Framer).ReadFrame(0xc00020e000, 0xc000686570, 0xc000686570, 0x0, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/vendor/golang.org/x/net/http2/frame.go:492 +0xa1
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport.(*http2Server).HandleStreams(0xc00045a780, 0xc0006863c0, 0x426ee98)
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/internal/transport/http2_server.go:431 +0x7c
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc.(*Server).serveStreams(0xc00045b800, 0x4ab1c60, 0xc00045a780)
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/server.go:713 +0xdd
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc.(*Server).handleRawConn.func1(0xc00045b800, 0x4ab1c60, 0xc00045a780)
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/server.go:675 +0x43
+created by github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc.(*Server).handleRawConn
+	/go/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/server.go:674 +0x580
+
+goroutine 29 [select]:
+github.com/cockroachdb/cockroach/pkg/server.(*Node).startAssertEngineHealth.func1(0x4a5e5c0, 0xc0004ffb00)
+	/go/src/github.com/cockroachdb/cockroach/pkg/server/node_engine_health.go:43 +0x17b
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc00032a8a0, 0xc000c14000, 0xc0006877a0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 30 [chan receive]:
+github.com/cockroachdb/cockroach/pkg/gossip.(*server).start.func3(0x4a5e5c0, 0xc0004ffc80)
+	/go/src/github.com/cockroachdb/cockroach/pkg/gossip/server.go:383 +0x5b
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc00032b2b0, 0xc000c14000, 0xc00038c380)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 31 [select]:
+github.com/cockroachdb/cockroach/pkg/gossip.(*Gossip).bootstrap.func1(0x4a5e5c0, 0xc00081d260)
+	/go/src/github.com/cockroachdb/cockroach/pkg/gossip/gossip.go:1356 +0x2c3
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc00032b430, 0xc000c14000, 0xc00032b300)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 32 [select]:
+github.com/cockroachdb/cockroach/pkg/gossip.(*Gossip).manage.func1(0x4a5e5c0, 0xc0009a0db0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/gossip/gossip.go:1400 +0x33c
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc00032b530, 0xc000c14000, 0xc00032b500)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 33 [IO wait]:
+internal/poll.runtime_pollWait(0x400bfbdfb0, 0x72, 0x0)
+	/usr/local/go/src/runtime/netpoll.go:182 +0x56
+internal/poll.(*pollDesc).wait(0xc000a9f998, 0x72, 0x0, 0x0, 0x40dd113)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x9b
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Accept(0xc000a9f980, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:384 +0x1ba
+net.(*netFD).accept(0xc000a9f980, 0xc000490000, 0x7b9650, 0x10)
+	/usr/local/go/src/net/fd_unix.go:238 +0x42
+net.(*TCPListener).accept(0xc00046e400, 0x78c5cf, 0xc000ed03b0, 0xc00102c688)
+	/usr/local/go/src/net/tcpsock_posix.go:139 +0x32
+net.(*TCPListener).Accept(0xc00046e400, 0x426ce50, 0xc0000b7940, 0xc0002aec44, 0x0)
+	/usr/local/go/src/net/tcpsock.go:260 +0x48
+github.com/cockroachdb/cockroach/vendor/github.com/cockroachdb/cmux.(*cMux).Serve(0xc0000b7940, 0x0, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/vendor/github.com/cockroachdb/cmux/cmux.go:124 +0x88
+github.com/cockroachdb/cockroach/pkg/server.(*Server).startListenRPCAndSQL.func5.1.1()
+	/go/src/github.com/cockroachdb/cockroach/pkg/server/server.go:1772 +0x2f
+sync.(*Once).Do(0xc000322e10, 0xc00102c750)
+	/usr/local/go/src/sync/once.go:44 +0xb3
+github.com/cockroachdb/cockroach/pkg/server.(*Server).startListenRPCAndSQL.func5.1(0x4a5e5c0, 0xc00081d2c0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/server/server.go:1771 +0x63
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc00032b650, 0xc000c14000, 0xc00038c440)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 114 [select]:
+github.com/cockroachdb/cockroach/pkg/storage/closedts/provider.(*Provider).runCloser(0xc00039cf50, 0x4a5e5c0, 0xc0009a1050)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/closedts/provider/provider.go:134 +0x335
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc00032be40, 0xc000c14000, 0xc00032bde0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 87 [chan receive]:
+github.com/cockroachdb/cockroach/pkg/storage/closedts/provider.(*Provider).Notify.func1(0x4a5e5c0, 0xc0004ffd10)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/closedts/provider/provider.go:217 +0x147
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8260, 0xc000c14000, 0xc000372940)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 115 [select]:
+github.com/cockroachdb/cockroach/pkg/internal/client/requestbatcher.(*RequestBatcher).run(0xc00040c0e0, 0x4a5e540, 0xc000074028)
+	/go/src/github.com/cockroachdb/cockroach/pkg/internal/client/requestbatcher/batcher.go:411 +0x36f
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunAsyncTask.func1(0xc000c14000, 0x4a5e540, 0xc000074028, 0xc000400600, 0x22, 0x0, 0x0, 0xc00020b030)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:321 +0xe6
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunAsyncTask
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:316 +0x131
+
+goroutine 116 [select]:
+github.com/cockroachdb/cockroach/pkg/internal/client/requestbatcher.(*RequestBatcher).run(0xc0003a1260, 0x4a5e540, 0xc000074028)
+	/go/src/github.com/cockroachdb/cockroach/pkg/internal/client/requestbatcher/batcher.go:411 +0x36f
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunAsyncTask.func1(0xc000c14000, 0x4a5e540, 0xc000074028, 0xc000024870, 0x22, 0x0, 0x0, 0xc0002c8030)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:321 +0xe6
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunAsyncTask
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:316 +0x131
+
+goroutine 88 [chan receive]:
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func1(0x4a5e5c0, 0xc000b002a0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:151 +0x4a
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8990, 0xc000c14000, 0xc0003b1280)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 89 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x0)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000ae4000)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000ae4000)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c89e0, 0xc000c14000, 0xc0002c89b0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 90 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x1d)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00030)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00030)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8a10, 0xc000c14000, 0xc0002c89f0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 91 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x1e)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00060)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00060)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8a60, 0xc000c14000, 0xc0002c8a20)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 92 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x1)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00090)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00090)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8af0, 0xc000c14000, 0xc0002c8ae0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 93 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x2)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b000c0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b000c0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8b60, 0xc000c14000, 0xc0002c8b10)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 94 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0xc000000003)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b000f0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b000f0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8bc0, 0xc000c14000, 0xc0002c8b90)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 95 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x4)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00120)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00120)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8c30, 0xc000c14000, 0xc0002c8c10)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 96 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x5)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00150)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00150)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8c50, 0xc000c14000, 0xc0002c8c40)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 97 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x6)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00180)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00180)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8c70, 0xc000c14000, 0xc0002c8c60)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 130 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x1c)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00000)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00000)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8c90, 0xc000c14000, 0xc0002c8c80)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 131 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x9)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b001e0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b001e0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8cb0, 0xc000c14000, 0xc0002c8ca0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 132 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0xa)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00210)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00210)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8cd0, 0xc000c14000, 0xc0002c8cc0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 133 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0xb)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00240)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00240)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8cf0, 0xc000c14000, 0xc0002c8ce0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 134 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0xc00000000c)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00270)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00270)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8d10, 0xc000c14000, 0xc0002c8d00)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 135 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x8)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b001b0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b001b0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8d30, 0xc000c14000, 0xc0002c8d20)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 136 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0xca00000019)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00510)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00510)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8d50, 0xc000c14000, 0xc0002c8d40)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 137 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x18)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b004e0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b004e0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8d70, 0xc000c14000, 0xc0002c8d60)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 138 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x1b)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b005a0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b005a0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8da0, 0xc000c14000, 0xc0002c8d90)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 139 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x1f)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b06030)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b06030)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8dd0, 0xc000c14000, 0xc0002c8db0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 140 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x7)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b06000)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b06000)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8df0, 0xc000c14000, 0xc0002c8de0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 141 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0xe)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00300)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00300)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8e10, 0xc000c14000, 0xc0002c8e00)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 142 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0xf)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00330)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00330)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8e30, 0xc000c14000, 0xc0002c8e20)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 143 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x10)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00360)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00360)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8e50, 0xc000c14000, 0xc0002c8e40)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 144 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0xc000000011)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00390)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00390)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8e90, 0xc000c14000, 0xc0002c8e80)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 145 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0xc000000012)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b003c0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b003c0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8ee0, 0xc000c14000, 0xc0002c8eb0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 146 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0xc000000013)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b003f0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b003f0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8f10, 0xc000c14000, 0xc0002c8ef0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 147 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0xd)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b002d0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b002d0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8f40, 0xc000c14000, 0xc0002c8f20)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 148 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0x15)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00450)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00450)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8f90, 0xc000c14000, 0xc0002c8f50)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 149 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0xca00000016)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00480)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00480)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c8fc0, 0xc000c14000, 0xc0002c8fb0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 150 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0xc000000017)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b004b0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b004b0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9010, 0xc000c14000, 0xc0002c8fe0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 151 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0xc000000014)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00420)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00420)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9040, 0xc000c14000, 0xc0002c9020)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 152 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda990, 0xc00000001a)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda980)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc000256080, 0x4a5e5c0, 0xc000b00570)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:192 +0x7c
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2(0x4a5e5c0, 0xc000b00570)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:161 +0x3e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c90c0, 0xc000c14000, 0xc0002c9090)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 153 [semacquire]:
+sync.runtime_Semacquire(0xc0002560f8)
+	/usr/local/go/src/runtime/sema.go:56 +0x39
+sync.(*WaitGroup).Wait(0xc0002560f0)
+	/usr/local/go/src/sync/waitgroup.go:130 +0x65
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Wait(...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:167
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9100, 0xc000c14000, 0xc0002c90d0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 154 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).raftTickLoop(0xc0008ace00, 0x4a5e5c0, 0xc000b005d0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/store_raft.go:597 +0x264
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9160, 0xc000c14000, 0xc0002c9130)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 155 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).coalescedHeartbeatsLoop(0xc0008ace00, 0x4a5e5c0, 0xc000ae4030)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/store_raft.go:653 +0x129
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c91a0, 0xc000c14000, 0xc0002c9180)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 156 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).Start.func2(0x4a5e5c0, 0xc000b06060)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:1401 +0xe6
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9210, 0xc000c14000, 0xc0003b12a0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 157 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).redirectOnOrAcquireLease.func2(0xc00020b140, 0xc000b32000, 0x4a5e5c0, 0xc000b060c0, 0xc0005dc0e0, 0xc0000740e0, 0xc0000740e0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_range_lease.go:1002 +0x24e
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).redirectOnOrAcquireLease(0xc000b32000, 0x4a5e5c0, 0xc000b060c0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_range_lease.go:1058 +0x1c7
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).getLeaseForGossip.func1(0x4a5e5c0, 0xc000b060c0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_gossip.go:214 +0x6e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunTask(0xc000c14000, 0x4a5e5c0, 0xc000b060c0, 0x414ed88, 0x2a, 0xc000bf6b10, 0x0, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:283 +0xe7
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).getLeaseForGossip(0xc000b32000, 0x4a5e5c0, 0xc000b060c0, 0xc000bf6be0, 0x10)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_gossip.go:210 +0xe8
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).maybeGossipFirstRange(0xc000b32000, 0x4a5e5c0, 0xc000b060c0, 0x4a5e5c0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_gossip.go:268 +0x1fd
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).startGossip.func3(0x4a5e5c0, 0xc000b060c0, 0xc000b32000, 0x4a5e5c0, 0xc000b060c0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:1492 +0x43
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).startGossip.func4(0x4a5e5c0, 0xc000b06090)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:1529 +0x15c
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9220, 0xc000c14000, 0xc00046d9a0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 158 [runnable]:
+github.com/cockroachdb/cockroach/pkg/util/retry.(*Retry).Next(0xc000dbbed0, 0xc000ae4090)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/retry/retry.go:116 +0x186
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).startGossip.func4(0x4a5e5c0, 0xc000ae4060)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:1526 +0xa0
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9230, 0xc000c14000, 0xc00046d9f0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 159 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).redirectOnOrAcquireLease.func2(0xc000298550, 0xc000b32800, 0x4a5e5c0, 0xc000b00630, 0xc00052e000, 0xc00029bd00, 0xc00029bd00)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_range_lease.go:1002 +0x24e
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).redirectOnOrAcquireLease(0xc000b32800, 0x4a5e5c0, 0xc000b00630, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_range_lease.go:1058 +0x1c7
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).getLeaseForGossip.func1(0x4a5e5c0, 0xc000b00630)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_gossip.go:214 +0x6e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunTask(0xc000c14000, 0x4a5e5c0, 0xc000b00630, 0x414ed88, 0x2a, 0xc000bbbc88, 0x0, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:283 +0xe7
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).getLeaseForGossip(0xc000b32800, 0x4a5e5c0, 0xc000b00630, 0x4a5e5c0, 0xc000b00600)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_gossip.go:210 +0xe8
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).startGossip.func1(0x4a5e5c0, 0xc000b00630, 0xc000b32800, 0x4a5e5c0, 0xc000b00630)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:1471 +0x43
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).startGossip.func4(0x4a5e5c0, 0xc000b00600)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:1529 +0x15c
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9250, 0xc000c14000, 0xc00046da40)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 161 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).startLeaseRenewer.func1(0x4a5e5c0, 0xc000ae41e0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:1591 +0x2ea
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c92a0, 0xc000c14000, 0xc0002c9290)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 162 [sync.Cond.Wait]:
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:307
+sync.runtime_notifyListWait(0xc000dda8d0, 0x0)
+	/usr/local/go/src/runtime/sema.go:510 +0xf9
+sync.(*Cond).Wait(0xc000dda8c0)
+	/usr/local/go/src/sync/cond.go:56 +0x9e
+github.com/cockroachdb/cockroach/pkg/storage/closedts/provider.(*Provider).Subscribe(0xc00039cf50, 0x4a5e5c0, 0xc000abd3e0, 0xc00096d3e0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/closedts/provider/provider.go:290 +0x436
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).startClosedTimestampRangefeedSubscriber.func1(0x4a5e5c0, 0xc000abd3e0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:1612 +0x57
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunAsyncTask.func1(0xc000c14000, 0x4a5e5c0, 0xc000abd3e0, 0xc000400c90, 0x25, 0x4ac8860, 0xc00040c380, 0xc0003b12c0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:321 +0xe6
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunAsyncTask
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:316 +0x131
+
+goroutine 163 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).startClosedTimestampRangefeedSubscriber.func2(0x4a5e5c0, 0xc000ae4300)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:1620 +0x2db
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9300, 0xc000c14000, 0xc0003b13a0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 99 [runnable]:
+github.com/cockroachdb/cockroach/pkg/storage/raftentry.(*Cache).Get(0xc0009815e0, 0x1, 0x75c6, 0x0, 0x1, 0x2, 0x97, 0xc000edcb18, 0xf61ef8, 0x4a5e540, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/raftentry/cache.go:214 +0x21a
+github.com/cockroachdb/cockroach/pkg/storage.(*replicaRaftStorage).Term(0xc000b32000, 0x75c6, 0x0, 0x0, 0x0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_raftstorage.go:250 +0x91
+github.com/cockroachdb/cockroach/vendor/go.etcd.io/etcd/raft.(*raftLog).term(0xc0005dc230, 0x75c6, 0x1, 0x1, 0x1ac46b5)
+	/go/src/github.com/cockroachdb/cockroach/vendor/go.etcd.io/etcd/raft/log.go:243 +0x9b
+github.com/cockroachdb/cockroach/vendor/go.etcd.io/etcd/raft.(*raftLog).lastTerm(0xc0005dc230, 0x75c6)
+	/go/src/github.com/cockroachdb/cockroach/vendor/go.etcd.io/etcd/raft/log.go:224 +0x3d
+github.com/cockroachdb/cockroach/vendor/go.etcd.io/etcd/raft.newRaft(0xc000edd198, 0xc00084f140)
+	/go/src/github.com/cockroachdb/cockroach/vendor/go.etcd.io/etcd/raft/raft.go:384 +0x9f6
+github.com/cockroachdb/cockroach/vendor/go.etcd.io/etcd/raft.NewRawNode(0xc00084f198, 0xc00020b2d0, 0xc000074040, 0x4a5e5c0)
+	/go/src/github.com/cockroachdb/cockroach/vendor/go.etcd.io/etcd/raft/rawnode.go:48 +0x2f
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).withRaftGroupLocked(0xc000b32000, 0x426fd01, 0x426bef8, 0xc000b06300, 0xc000bf6860)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_raft.go:1365 +0x297
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).maybeInitializeRaftGroup(0xc000b32000, 0x4a5e5c0, 0xc000b062d0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_init.go:266 +0x152
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).sendWithRangeID(0xc000b32000, 0x4a5e5c0, 0xc000b062d0, 0x1, 0x177e1199a7854638, 0x0, 0x0, 0x0, 0x0, 0x1, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica.go:553 +0x183
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).Send(0xc000b32000, 0x4a5e5c0, 0xc000b062d0, 0x177e1199a7854638, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica.go:525 +0x83
+github.com/cockroachdb/cockroach/pkg/storage.(*pendingLeaseRequest).requestLeaseAsync.func2(0x4a5e5c0, 0xc000b062d0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/replica_range_lease.go:401 +0x57b
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunAsyncTask.func1(0xc000c14000, 0x4a5e5c0, 0xc000b062d0, 0xc0002f6040, 0x35, 0x4ac8860, 0xc00020efc0, 0xc000bdc000)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:321 +0xe6
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunAsyncTask
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:316 +0x131
+
+goroutine 164 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*StoreRebalancer).Start.func1(0x4a5e5c0, 0xc000ae4390)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/store_rebalancer.go:182 +0x181
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9310, 0xc000c14000, 0xc0003b13c0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 165 [syscall]:
+non-Go function
+	pc=0x31a37e7
+non-Go function
+	pc=0x38794fa
+non-Go function
+	pc=0x32c0e01
+non-Go function
+	pc=0x31202f7
+non-Go function
+	pc=0x7bc99f
+github.com/cockroachdb/cockroach/pkg/storage/engine._Cfunc_DBNewIter(0x400228efd0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xc00026955a, 0x6, 0x0, 0x0, ...)
+	_cgo_gotypes.go:1000 +0x62 fp=0xc000d858f8 sp=0xc000d85850 pc=0x16d4022
+github.com/cockroachdb/cockroach/pkg/storage/engine.(*rocksDBIterator).init.func1(0x400228efd0, 0x0, 0x0, 0x0, 0x0, 0xc00026955a, 0x6, 0x6, 0x0, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:2197 +0xd4 fp=0xc000d85a48 sp=0xc000d858f8 pc=0x16ed924
+github.com/cockroachdb/cockroach/pkg/storage/engine.(*rocksDBIterator).init(0xc0005ee1c0, 0x400228efd0, 0x0, 0x0, 0x0, 0x0, 0xc00026955a, 0x6, 0x6, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:2197 +0x82 fp=0xc000d85ac8 sp=0xc000d85a48 pc=0x16e03c2
+github.com/cockroachdb/cockroach/pkg/storage/engine.newRocksDBIterator(0x400228efd0, 0x0, 0x0, 0x0, 0x0, 0xc00026955a, 0x6, 0x6, 0x0, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:2177 +0xc1 fp=0xc000d85b68 sp=0xc000d85ac8 pc=0x16e02d1
+github.com/cockroachdb/cockroach/pkg/storage/engine.dbIterate(0x400228efd0, 0x4a99d80, 0xc000492d80, 0xc000269554, 0x6, 0x6, 0x0, 0x0, 0xc00026955a, 0x6, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:2845 +0x140 fp=0xc000d85ce0 sp=0xc000d85b68 pc=0x16e5520
+github.com/cockroachdb/cockroach/pkg/storage/engine.(*RocksDB).Iterate(0xc000492d80, 0xc000269554, 0x6, 0x6, 0x0, 0x0, 0xc00026955a, 0x6, 0x6, 0x0, ...)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:891 +0xb3 fp=0xc000d85d70 sp=0xc000d85ce0 pc=0x16d8e43
+github.com/cockroachdb/cockroach/pkg/storage/compactor.(*Compactor).examineQueue(0xc000289560, 0x4a5e5c0, 0xc000ae43f0, 0x1, 0xc000c05701, 0x76baf9)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/compactor/compactor.go:465 +0x17a fp=0xc000d85e48 sp=0xc000d85d70 pc=0x1b82f9a
+github.com/cockroachdb/cockroach/pkg/storage/compactor.(*Compactor).Start.func1.1(0x4a5e5c0, 0xc000ae43f0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/compactor/compactor.go:130 +0x31c fp=0xc000d85f78 sp=0xc000d85e48 pc=0x1b845bc
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc0002c9320, 0xc000c14000, 0xc0003b13e0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb fp=0xc000d85fc8 sp=0xc000d85f78 pc=0x12d34fb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 118 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*baseQueue).processLoop.func1(0x4a5e5c0, 0xc000ae4210)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/queue.go:750 +0x15e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc000298e10, 0xc000c14000, 0xc0002f3140)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 119 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*baseQueue).processLoop.func1(0x4a5e5c0, 0xc000ae41b0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/queue.go:750 +0x15e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc000298e20, 0xc000c14000, 0xc0002f3180)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 120 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*baseQueue).processLoop.func1(0x4a5e5c0, 0xc000ae4270)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/queue.go:750 +0x15e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc000298e50, 0xc000c14000, 0xc0002f31a0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 121 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*baseQueue).processLoop.func1(0x4a5e5c0, 0xc000ae42a0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/queue.go:750 +0x15e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc000298e90, 0xc000c14000, 0xc0002f31c0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 122 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*baseQueue).processLoop.func1(0x4a5e5c0, 0xc000ae42d0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/queue.go:750 +0x15e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc000298ec0, 0xc000c14000, 0xc0002f31e0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 123 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*baseQueue).processLoop.func1(0x4a5e5c0, 0xc000ae4240)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/queue.go:750 +0x15e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc000298ed0, 0xc000c14000, 0xc0002f3200)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 124 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*baseQueue).processLoop.func1(0x4a5e5c0, 0xc000ae4360)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/queue.go:750 +0x15e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc000298ef0, 0xc000c14000, 0xc0002f3240)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 125 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*baseQueue).processLoop.func1(0x4a5e5c0, 0xc000ae4330)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/queue.go:750 +0x15e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc000298f40, 0xc000c14000, 0xc0002f3280)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 126 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*baseQueue).processLoop.func1(0x4a5e5c0, 0xc000ae43c0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/queue.go:750 +0x15e
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc000298f60, 0xc000c14000, 0xc0002f32c0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+
+goroutine 127 [select]:
+github.com/cockroachdb/cockroach/pkg/storage.(*replicaScanner).waitAndProcess(0xc0006a00d0, 0x4a5e5c0, 0xc000b008d0, 0xc000c14000, 0x229bc590, 0xedc783185, 0x0, 0xc000970800, 0x25)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scanner.go:217 +0x1d1
+github.com/cockroachdb/cockroach/pkg/storage.(*replicaScanner).scanLoop.func1.1(0xc000970800, 0xc0009a0cc0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scanner.go:279 +0x81
+github.com/cockroachdb/cockroach/pkg/storage.(*storeReplicaVisitor).Visit(0xc0009a0cc0, 0xc000812400)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:347 +0x189
+github.com/cockroachdb/cockroach/pkg/storage.(*replicaScanner).scanLoop.func1(0x4a5e5c0, 0xc000b008d0)
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/scanner.go:277 +0x19b
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc000298f80, 0xc000c14000, 0xc0002f3300)
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0xfb
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/go/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:189 +0xa8
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x3b7d728ae0 pc=0x31a37e7]
+
+runtime stack:
+runtime.throw(0x414f1cc, 0x2a)
+	/usr/local/go/src/runtime/panic.go:617 +0x72
+runtime.sigpanic()
+	/usr/local/go/src/runtime/signal_unix.go:374 +0x4a9
