@@ -19,6 +19,7 @@ func NewRouter() *gin.Engine {
 	router.GET("/v1/security/validate", middleware.RequireAuth, controllers.Validate)
 
 	router.GET("/v1/catalogs/users", middleware.RequireAuth, controllers.GetUsers)
+	router.POST("/v1/catalogs/users", middleware.RequireAuth, controllers.PostUsers)
 
 	router.POST("/v1/catalogs/club", middleware.RequireAuth, controllers.PostClub)
 	router.GET("/v1/catalogs/clubs", middleware.RequireAuth, controllers.GetClubs)
@@ -27,6 +28,7 @@ func NewRouter() *gin.Engine {
 	router.GET("/v1/catalogs/categories", middleware.RequireAuth, controllers.GetCatgories)
 
 	router.GET("/v1/catalogs/permissions", middleware.RequireAuth, controllers.GetPermissions)
+	router.POST("/v1/catalogs/permissions", middleware.RequireAuth, controllers.PostPermissions)
 
 	router.POST("/v1/catalogs/court", middleware.RequireAuth, controllers.PostCourts)
 	router.GET("/v1/catalogs/court", middleware.RequireAuth, controllers.GetCourts)
@@ -44,6 +46,9 @@ func NewRouter() *gin.Engine {
 	router.GET("/v1/tournament/listgames", middleware.RequireAuth, controllers.GetGames)
 
 	router.POST("/v1/utility/loadusers", middleware.RequireAuth, controllers.PostLoadUsers)
+
+	router.POST("/v1/utility/imageupload", middleware.RequireAuth, controllers.UploadImage)
+	router.GET("/v1/utility/image", middleware.RequireAuth, controllers.GetImage)
 
 	return router
 }

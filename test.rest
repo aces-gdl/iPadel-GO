@@ -41,10 +41,11 @@ content-type: application/json
 
 ### Users
 GET http://{{host}}/v1/catalogs/users
-?page=1&limit=50&CategoryID=71055687-9697-4e71-8f12-4902011e048a
+?page=-1&limit=50&CategoryID=71055687-9697-4e71-8f12-4902011e048a
 content-type: application/json
 ###
-GET http://{{host}}/v1/catalogs/club
+GET http://{{host}}/v1/catalogs/clubs
+content-type: application/json
 
 ###
 
@@ -89,8 +90,8 @@ POST http://{{host}}/v1/catalogs/category
 content-type: application/json
 
 {
-    "Description":"Cuarta 3ra Varonil",
-    "Level":"3",
+    "Description":"Open  Varonil",
+    "Level":"0",
     "Active":"true"
 }
 ###
@@ -122,4 +123,31 @@ Content-Type: application/json
 ###
 GET http://{{host}}/v1/tournament/enrolledteams?CategoryID=83caef22-f632-4db4-a9c7-81b29b7cedf2&TournamentID=fa0bbb6d-ad00-4139-8814-164715502591
 Content-Type: application/json
+###
+POST http://{{host}}/v1/catalogs/permissions
+Content-Type: application/json
+
+{
+    "Description" :"Staff2",
+    "Active": "true"
+}
+###
+GET http://{{host}}/v1/catalogs/permissions?limit=-1
+content-type: application/json
+###
+POST http://{{host}}/v1/catalogs/tournaments
+content-type: application/json
+
+{
+	"Description": "750 Fecha 12",
+    "StartDate": "2023-12-10",
+    "EndDate" : "2023-12-17",
+    "RoundrobinDays" : "4",
+    "PlaOffDays" : "3",
+    "HostClubID": "",
+    "GameDuration": "60",
+    "RoundrobinCourts": "6",
+    "PlayOffCourts": "3",
+    "Active":"true"
+}
 ###

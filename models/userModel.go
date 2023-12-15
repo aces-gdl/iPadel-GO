@@ -16,10 +16,14 @@ type User struct {
 	Password     string
 	GoogleID     string
 	ImageURL     string
+	HasPicture   int
 	Name         string
 	FamilyName   string
 	GivenName    string
 	PermissionID uuid.UUID `gorm:"type:uuid;default:null;"`
 	Ranking      int
 	CategoryID   uuid.UUID `gorm:"type:uuid;default:null;"`
+	Birthday     time.Time
+	Phone        string
+	MemberSince  time.Time
 }

@@ -40,8 +40,8 @@ func PostCreateGroups(c *gin.Context) {
 	}
 
 	var teams []models.TournamentTeam
-
-	results := initializers.DB.Order("ranking1 + ranking2 DESC").Find(&teams)
+	// equipos de la categoria correcta
+	results := initializers.DB.Debug().Where("tournament_id =? and category_id =?", body.TournamentID, body.CategoryID).Order("ranking1 + ranking2 DESC").Find(&teams)
 	if results.Error != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": "Usuarios no existen... ",

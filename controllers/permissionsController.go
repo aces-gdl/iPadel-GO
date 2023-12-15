@@ -26,3 +26,32 @@ func GetPermissions(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"status": "success", "results": len(permissions), "data": permissions})
 }
+
+func PostPermissions(c *gin.Context) {
+	var body struct {
+		Description string
+		Active      string
+	}
+
+	x := c.Bind(&body)
+	if x != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "Fallo al leer body...",
+		})
+		return
+	}
+	active, _ := strconv.ParseBool(body.Active)
+	permission := models.Permission{
+		Description: body.Description,
+		Active:      active,
+	}
+
+	result := initializers.DB.Create(&permission)
+	if result.Error != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "Fallo al crear permiso... ",
+		})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{})
+}

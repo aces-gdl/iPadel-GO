@@ -12,9 +12,6 @@ import (
 	"gorm.io/gorm/clause"
 )
 
-func GetSuscribed(c *gin.Context) {
-}
-
 func PostSimulateEnrollment(c *gin.Context) {
 	var body struct {
 		CategoryID   uuid.UUID
@@ -31,7 +28,7 @@ func PostSimulateEnrollment(c *gin.Context) {
 	// Buscar Usuarios
 	userCount, _ := strconv.Atoi(body.UserCount)
 	var users []models.User
-	results := initializers.DB.Preload(clause.Associations).Limit(userCount).Find(&users)
+	results := initializers.DB.Debug().Where("category_id = ?", body.CategoryID).Preload(clause.Associations).Limit(userCount).Find(&users)
 	if results.Error != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"status": "error", "message": results.Error})
 		return
@@ -76,7 +73,7 @@ func PostSimulateEnrollment(c *gin.Context) {
 		team.Ranking2 = teamMember2.Ranking
 
 		fmt.Println(team)
-		result := initializers.DB.Create(&team)
+		result := initializers.DB.Debug().Create(&team)
 		if result.Error != nil {
 			c.JSON(http.StatusBadRequest, gin.H{
 				"error": "Fallo al crear Equipo... ",
@@ -89,17 +86,11 @@ func PostSimulateEnrollment(c *gin.Context) {
 }
 
 func GetEnrolledTeams(c *gin.Context) {
-	var page = c.DefaultQuery("page", "1")
-	var limit = c.DefaultQuery("limit", "10")
 	var tournamentID = c.DefaultQuery("TournamentID", "")
 	var categoryID = c.DefaultQuery("CategoryID", "")
 
-	intPage, _ := strconv.Atoi(page)
-	intLimit, _ := strconv.Atoi(limit)
-	offset := (intPage - 1) * intLimit
-
 	var teams []models.TournamentTeam
-	results := initializers.DB.Where("tournament_id = ? AND category_id = ?", tournamentID, categoryID).Limit(intLimit).Offset(offset).Find(&teams)
+	results := initializers.DB.Where("tournament_id = ? AND category_id = ?", tournamentID, categoryID).Find(&teams)
 	if results.Error != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"status": "error", "message": results.Error})
 		return

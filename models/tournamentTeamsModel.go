@@ -12,9 +12,9 @@ type TournamentTeam struct {
 	CreatedAt    time.Time
 	UpdatedAt    time.Time
 	DeletedAt    gorm.DeletedAt `gorm:"index"`
-	Name         string         `gorm:"unique"`
-	CategoryID   uuid.UUID      `gorm:"type:uuid;"`
-	Member1ID    uuid.UUID      `gorm:"type:uuid;"`
+	Name         string
+	CategoryID   uuid.UUID `gorm:"type:uuid;"`
+	Member1ID    uuid.UUID `gorm:"type:uuid;"`
 	Name1        string
 	Ranking1     int
 	Member2ID    uuid.UUID `gorm:"type:uuid;"`
