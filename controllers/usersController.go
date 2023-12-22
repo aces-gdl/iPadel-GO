@@ -50,6 +50,7 @@ func GetUsers(c *gin.Context) {
 		HasPicture            int
 		Birthday              time.Time
 		PermissionDescription string
+		Ranking               int
 	}
 
 	var usersExtended []userExtended
