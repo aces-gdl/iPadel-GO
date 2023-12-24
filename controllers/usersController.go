@@ -127,7 +127,8 @@ func PostUsers(c *gin.Context) {
 		HasPicture   string
 		Phone        string
 	}
-	if c.Bind(&body) != nil {
+	err := c.Bind(&body)
+	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": "Fallo al leer body...",
 		})
