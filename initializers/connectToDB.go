@@ -9,13 +9,14 @@ import (
 )
 
 var DB *gorm.DB
+var ti *time.Location
 
 func ConnectTODB() {
 	var err error
 	dsn := os.Getenv("DSN")
+	ti, _ = time.LoadLocation("America/Mexico_City")
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{
 		NowFunc: func() time.Time {
-			ti, _ := time.LoadLocation("America/Mexico_City")
 			return time.Now().In(ti)
 		},
 	})

@@ -74,35 +74,24 @@ func GetTimeSlots(c *gin.Context) {
 		})
 		return
 	}
+
+	//FilterDate, _ := time.ParseInLocation(time.RFC3339, c.DefaultQuery("FilterDate", ""), initializers.DB.NowFunc().Location())
 	FilterDate := c.DefaultQuery("FilterDate", "")
-	FilterDateStart := FilterDate + " 00:00:00.000 -0600"
-	FilterDateEnd := FilterDate + " 23:59:59.000 -0600"
+
 	var tournament models.Tournament
 	initializers.DB.Where("id = ?", TournamentID).First(&tournament)
 
-	type timeSlotsStruct struct {
-		TournamentID uuid.UUID
-		Description  string
-		CourtNumber  int
-		StartTime    time.Time
-		EndTime      time.Time
-		GameID       uuid.UUID
-	}
+	TournamentIDstr := c.DefaultQuery("TournamentID", "")
+	var timeSlotsRecords []models.TournamentTimeSlots
 
-	var timeSlotsRecords []timeSlotsStruct
-	myQuery := `Select 
-					tournament_id , 
-					category_id ,
-					description ,
-					court_number,
-					start_time,
-					end_time ,
-					game_id 
-				From tournament_time_slots
-				Where tournament_id = ? and start_time  >= ? and start_time <=? 
-				Order By start_time, court_number`
+	myQuery := `Select *
+				From tournament_time_slots 
+		 		where  1 = 1 
+					and tournament_id = '` + TournamentIDstr + `' 
+					and start_time  between '` + FilterDate + `T00:00:00.000-06:00' and '` + FilterDate + `T23:59:59.000-06:00'
+		 		Order By start_time, court_number`
 
-	results := initializers.DB.Debug().Raw(myQuery, TournamentID, FilterDateStart, FilterDateEnd).Scan(&timeSlotsRecords)
+	results := initializers.DB.Debug().Raw(myQuery).Scan(&timeSlotsRecords)
 	if results.Error != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"status": "error", "message": results.Error})
 		return
