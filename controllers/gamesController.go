@@ -52,6 +52,13 @@ func GetGames(c *gin.Context) {
 		TournamentTimeSlotsID uuid.UUID
 		CategoryColor         string
 		CategoryDescription   string
+		GameResultsID         uuid.UUID
+		Team1Set1             int
+		Team1Set2             int
+		Team1Set3             int
+		Team2Set1             int
+		Team2Set2             int
+		Team2Set3             int
 	}
 
 	var gameLists []gameList
@@ -75,12 +82,20 @@ func GetGames(c *gin.Context) {
 								tt2.member2_id as team2_member2_id,
 								tt2.name2 as team2_name2,
 								tt2.ranking2 as team2_ranking2,
-								tg.tournament_time_slots_id 
+								tg.tournament_time_slots_id,
+								gr.id as game_results_id,
+								gr.team1_set1,
+								gr.team1_set2,
+								gr.team1_set3, 
+								gr.team2_set1,
+								gr.team2_set2,
+								gr.team2_set3 
 							from tournament_games tg 
 								inner join tournament_teams tt1 on tg.team1_id = tt1.id and tg.tournament_id = tt1.tournament_id 
 								inner join tournament_teams tt2 on tg.team2_id = tt2.id and tg.tournament_id = tt2.tournament_id 
 								inner join categories c on tg.category_id = c.id 
 								inner join tournament_groups tgrp on tg.tournament_group_id = tgrp.id
+							    left outer join tournament_game_results gr on tg.id = gr.game_id
 							where tg.tournament_id ='` + TournamentID + `'  `
 	results := initializers.DB.Debug().Raw(unassignedGameQuery).Scan(&gameLists)
 	if results.Error != nil {
@@ -148,14 +163,14 @@ func PutAssignGamesToTimeSlots(c *gin.Context) {
 	}
 
 	game.TournamentTimeSlotsID = timeSlot.ID
-	results = initializers.DB.Save(&game)
+	results = initializers.DB.Debug().Save(&game)
 	if results.Error != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"status": "error", "message": results.Error})
 		return
 	}
 
 	timeSlot.GameID = game.ID
-	results = initializers.DB.Save(&timeSlot)
+	results = initializers.DB.Debug().Save(&timeSlot)
 	if results.Error != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"status": "error", "message": results.Error})
 		return

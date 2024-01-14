@@ -115,10 +115,11 @@ Content-Type: application/json
 POST http://{{host}}/v1/tournament/createtimeslots?TournamentID=d009aa9c-583c-4c1e-aea5-c3bcf28e0752
 Content-Type: application/json
 ###
-GET http://{{host}}/v1/tournament/gettimeslots?TournamentID=d009aa9c-583c-4c1e-aea5-c3bcf28e0752&FilterDate=2023-09-10
+GET http://{{host}}/v1/tournament/gettimeslots?TournamentID5921bf12-658f-4151-baff-83670a8bdf08
 Content-Type: application/json
 ###
-GET http://{{host}}/v1/tournament/listgames?CategoryID=5921bf12-658f-4151-baff-83670a8bdf08
+
+GET http://{{host}}/v1/tournament/listgames?TournamentID=8196138d-9c50-4143-b786-7c3be6815435
 Content-Type: application/json
 ###
 GET http://{{host}}/v1/tournament/enrolledteams?CategoryID=83caef22-f632-4db4-a9c7-81b29b7cedf2&TournamentID=fa0bbb6d-ad00-4139-8814-164715502591

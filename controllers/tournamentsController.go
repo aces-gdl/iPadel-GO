@@ -32,6 +32,24 @@ func GetTournaments(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"status": "success", "results": len(tournaments), "data": tournaments})
 }
 
+func GetTournament(c *gin.Context) {
+	var TournamentID = c.DefaultQuery("TournamentID", "")
+
+	if TournamentID == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"status": "error", "message": "TournamentID is required..."})
+		return
+	}
+	var tournament models.Tournament
+	results := initializers.DB.Debug().First(&tournament, "id ='"+TournamentID+"'")
+
+	if results.Error != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"status": "error", "message": "TournamentID Not Found..."})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"status": "success", "results": 1, "data": tournament})
+}
+
 func ParseTime(timeOnlySrt string) time.Time {
 	timeArray := strings.Split(timeOnlySrt, ":")
 	hour, _ := strconv.Atoi(timeArray[0])

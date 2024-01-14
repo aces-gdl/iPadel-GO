@@ -34,6 +34,7 @@ func NewRouter() *gin.Engine {
 	router.GET("/v1/catalogs/court", middleware.RequireAuth, controllers.GetCourts)
 	router.GET("/v1/catalogs/court/byclub", middleware.RequireAuth, controllers.GetCourtsByClub)
 	router.GET("/v1/catalogs/tournaments", middleware.RequireAuth, controllers.GetTournaments)
+	router.GET("/v1/catalogs/tournament", middleware.RequireAuth, controllers.GetTournament)
 	router.POST("/v1/catalogs/tournaments", middleware.RequireAuth, controllers.PostTournaments)
 
 	router.POST("/v1/tournament/simulateenrollment", middleware.RequireAuth, controllers.PostSimulateEnrollment)
@@ -48,6 +49,7 @@ func NewRouter() *gin.Engine {
 
 	router.PUT("/v1/tournament/assigngamestotimeslots", middleware.RequireAuth, controllers.PutAssignGamesToTimeSlots)
 	router.DELETE("/v1/tournament/deleteassigngamestotimeslots", middleware.RequireAuth, controllers.DeleteAssignGamesToTimeSlots)
+	router.POST("/v1/tournament/gameresults", middleware.RequireAuth, controllers.PostGameResults)
 
 	router.POST("/v1/utility/loadusers", middleware.RequireAuth, controllers.PostLoadUsers)
 
