@@ -28,6 +28,7 @@ import (
 func GetGames(c *gin.Context) {
 
 	var TournamentID = c.DefaultQuery("TournamentID", "")
+	var SearchStr = c.DefaultQuery("SearchStr", "")
 
 	type gameList struct {
 		TournamentID          uuid.UUID
@@ -96,7 +97,11 @@ func GetGames(c *gin.Context) {
 								inner join categories c on tg.category_id = c.id 
 								inner join tournament_groups tgrp on tg.tournament_group_id = tgrp.id
 							    left outer join tournament_game_results gr on tg.id = gr.game_id
-							where tg.tournament_id ='` + TournamentID + `'  `
+							where tg.tournament_id ='` + TournamentID + `' `
+	if SearchStr != "" {
+		unassignedGameQuery += ` and ( tt1.name1 like '%` + SearchStr + `%' or tt1.name2 like '%` + SearchStr + `%' or tt2.name1 like '%` + SearchStr + `%' or tt2.name2 like '%` + SearchStr + `%' ) `
+	}
+	unassignedGameQuery += `	order by tgrp.group_number`
 	results := initializers.DB.Debug().Raw(unassignedGameQuery).Scan(&gameLists)
 	if results.Error != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"status": "error", "message": results.Error})

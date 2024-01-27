@@ -46,6 +46,7 @@ func NewRouter() *gin.Engine {
 	router.GET("/v1/tournament/gettimeslots", middleware.RequireAuth, controllers.GetTimeSlots)
 	router.GET("/v1/tournament/enrolledteams", middleware.RequireAuth, controllers.GetEnrolledTeams)
 	router.GET("/v1/tournament/listgames", middleware.RequireAuth, controllers.GetGames)
+	router.GET("/v1/tournament/getroundrobinwinner", middleware.RequireAuth, controllers.GetRoundRobinWinner)
 
 	router.PUT("/v1/tournament/assigngamestotimeslots", middleware.RequireAuth, controllers.PutAssignGamesToTimeSlots)
 	router.DELETE("/v1/tournament/deleteassigngamestotimeslots", middleware.RequireAuth, controllers.DeleteAssignGamesToTimeSlots)

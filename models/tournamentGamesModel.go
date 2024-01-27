@@ -18,5 +18,6 @@ type TournamentGames struct {
 	Team1ID               uuid.UUID      `gorm:"type:uuid;"`
 	Team2ID               uuid.UUID      `gorm:"type:uuid;"`
 	TournamentTimeSlotsID uuid.UUID      `gorm:"type:uuid;"`
+	GameType              string
 	Active                bool
 }

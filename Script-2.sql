@@ -19,13 +19,16 @@ select
 	tt2.name2 as team2_name2,
 	tt2.ranking2 as team2_ranking2,
 	tg.tournament_time_slots_id,
-	gr.id,
+	gr.id as game_result_id,
 	gr.team1_set1,
 	gr.team1_set2,
 	gr.team1_set3, 
 	gr.team2_set1,
 	gr.team2_set2,
-	gr.team2_set3 
+	gr.team2_set3,
+	gr.winner,
+	gr.winning_reason,
+	gr.comments
 from tournament_games tg 
 	inner join tournament_teams tt1 on tg.team1_id = tt1.id and tg.tournament_id = tt1.tournament_id 
 	inner join tournament_teams tt2 on tg.team2_id = tt2.id and tg.tournament_id = tt2.tournament_id 
@@ -44,4 +47,6 @@ select count(*) from tournament_games tg group by tournament_group_id ;
 
 delete from public.tournament_games;
 delete from tournament_groups ;
-delete from tournament_team_by_groups;
+
+
+SELECT * FROM "tournaments" WHERE id ='8196138d-9c50-4143-b786-7c3be6815435' AND "tournaments"."deleted_at" IS NULL ORDER BY "tournaments"."id" LIMIT 1;
