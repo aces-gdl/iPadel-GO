@@ -51,6 +51,7 @@ func NewRouter() *gin.Engine {
 	router.PUT("/v1/tournament/assigngamestotimeslots", middleware.RequireAuth, controllers.PutAssignGamesToTimeSlots)
 	router.DELETE("/v1/tournament/deleteassigngamestotimeslots", middleware.RequireAuth, controllers.DeleteAssignGamesToTimeSlots)
 	router.POST("/v1/tournament/gameresults", middleware.RequireAuth, controllers.PostGameResults)
+	router.POST("/v1/tournament/creategame", middleware.RequireAuth, controllers.PostCreateGame)
 
 	router.POST("/v1/utility/loadusers", middleware.RequireAuth, controllers.PostLoadUsers)
 

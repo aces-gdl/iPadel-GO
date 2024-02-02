@@ -257,3 +257,73 @@ func DeleteAssignGamesToTimeSlots(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"status": "success", "results": 1, "data": game})
 
 }
+
+func PostCreateGame(c *gin.Context) {
+
+	var body struct {
+		TournamentID string
+		CategoryID   string
+		GroupID      string
+		Team1ID      string
+		Team2ID      string
+		Comment      string
+	}
+
+	err := c.Bind(&body)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"status": "error", "message": err.Error})
+		return
+	}
+	var newGame models.TournamentGames
+	TournamentID, _ := uuid.Parse(body.TournamentID)
+	CategoryID, _ := uuid.Parse(body.CategoryID)
+	GroupID, _ := uuid.Parse(body.GroupID)
+	Team1ID, _ := uuid.Parse(body.Team1ID)
+	Team2ID, _ := uuid.Parse(body.Team2ID)
+
+	// Validate TournamentID
+	var tournament models.Tournament
+	results := initializers.DB.Debug().First(&tournament, TournamentID)
+	if results.Error != nil {
+		c.JSON(http.StatusNotFound, gin.H{"status": "error", "message": "Tournament not found..."})
+		return
+	}
+
+	//Validate Category
+	var category models.Category
+	results = initializers.DB.Debug().First(&category, CategoryID)
+	if results.Error != nil {
+		c.JSON(http.StatusNotFound, gin.H{"status": "error", "message": "Category not found..."})
+		return
+	}
+
+	var Team1 models.TournamentTeam
+	results = initializers.DB.Debug().First(&Team1, Team1ID)
+	if results.Error != nil {
+		c.JSON(http.StatusNotFound, gin.H{"status": "error", "message": "Team1 not found ..."})
+		return
+	}
+
+	var Team2 models.TournamentTeam
+	results = initializers.DB.Debug().First(&Team2, Team2ID)
+	if results.Error != nil {
+		c.JSON(http.StatusNotFound, gin.H{"status": "error", "message": "Team2 not found ..."})
+		return
+	}
+
+	newGame.TournamentID = TournamentID
+	newGame.CategoryID = CategoryID
+	newGame.TournamentGroupID = GroupID
+	newGame.Team1ID = Team1ID
+	newGame.Team2ID = Team2ID
+	newGame.Comment = body.Comment
+	newGame.Active = true
+
+	results = initializers.DB.Debug().Create(&newGame)
+	if results.Error != nil {
+		c.JSON(http.StatusNotFound, gin.H{"status": "error", "message": results.Error})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"status": "success", "results": 1, "data": newGame})
+}
