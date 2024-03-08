@@ -112,7 +112,7 @@ Content-Type: application/json
 GET http://{{host}}/v1/catalogs/court
 Content-Type: application/json
 ###
-POST http://{{host}}/v1/tournament/createtimeslots?TournamentID=d009aa9c-583c-4c1e-aea5-c3bcf28e0752
+POST http://{{host}}/v1/tournament/createtimeslots?TournamentID=8bccb746-0be4-450a-9f64-33d181958e97
 Content-Type: application/json
 ###
 GET http://{{host}}/v1/tournament/gettimeslots?TournamentID5921bf12-658f-4151-baff-83670a8bdf08

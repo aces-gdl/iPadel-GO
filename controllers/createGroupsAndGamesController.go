@@ -41,7 +41,12 @@ func PostCreateGroups(c *gin.Context) {
 
 	var teams []models.TournamentTeam
 	// equipos de la categoria correcta
-	results := initializers.DB.Debug().Where("tournament_id =? and category_id =?", body.TournamentID, body.CategoryID).Order("ranking1 + ranking2 DESC").Find(&teams)
+	// Cambiar query para que los ordene por el mas alto de cada pareja y arrastre al compañero
+	sql := `select * 
+				from tournament_teams tt 
+				where tournament_id ='` + body.TournamentID.String() + `' and category_id ='` + body.CategoryID.String() + `' 
+				order by  (case when ranking1 > ranking2 then ranking1 else ranking2 end) desc;`
+	results := initializers.DB.Debug().Raw(sql).Find(&teams)
 	if results.Error != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": "Usuarios no existen... ",
