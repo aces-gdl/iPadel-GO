@@ -1,24 +1,18 @@
 package models
 
 import (
-	"time"
-
-	"github.com/google/uuid"
 	"gorm.io/gorm"
 )
 
 type TournamentTeam struct {
-	ID           uuid.UUID `gorm:"primary_key;type:uuid;default:gen_random_uuid()"`
-	CreatedAt    time.Time
-	UpdatedAt    time.Time
-	DeletedAt    gorm.DeletedAt `gorm:"index"`
+	gorm.Model
 	Name         string
-	CategoryID   uuid.UUID `gorm:"type:uuid;"`
-	Member1ID    uuid.UUID `gorm:"type:uuid;"`
+	CategoryID   uint
+	Member1ID    uint
 	Name1        string
 	Ranking1     int
-	Member2ID    uuid.UUID `gorm:"type:uuid;"`
+	Member2ID    uint
 	Name2        string
 	Ranking2     int
-	TournamentID uuid.UUID `gorm:"type:uuid;"`
+	TournamentID uint
 }

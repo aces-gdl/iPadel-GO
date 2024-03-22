@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 	"gorm.io/gorm/clause"
 )
 
@@ -69,7 +68,7 @@ func PostTournaments(c *gin.Context) {
 		EndDate          string
 		StartTime        string
 		EndTime          string
-		HostClubID       string
+		HostClubID       uint
 		GameDuration     string
 		RoundrobinDays   string
 		PlayOffDays      string
@@ -90,7 +89,6 @@ func PostTournaments(c *gin.Context) {
 		fmt.Println(err)
 	}
 	endDate, _ := time.Parse("2006-01-02", body.EndDate)
-	clubID, _ := uuid.Parse(body.HostClubID)
 	gameDuration, _ := strconv.Atoi(body.GameDuration)
 	roundRobinCourts, _ := strconv.Atoi(body.RoundrobinCourts)
 	playoffCourts, _ := strconv.Atoi(body.PlayoffCourts)
@@ -105,7 +103,7 @@ func PostTournaments(c *gin.Context) {
 		EndDate:          endDate,
 		StartTime:        startTime,
 		EndTime:          endTime,
-		HostClubID:       clubID,
+		HostClubID:       body.HostClubID,
 		RoundrobinDays:   roundrobinDays,
 		RoundrobinCourts: roundRobinCourts,
 		PlayOffDays:      playoffDays,

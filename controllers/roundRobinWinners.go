@@ -6,7 +6,6 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 func GetRoundRobinWinner(c *gin.Context) {
@@ -47,21 +46,21 @@ func GetRoundRobinWinner(c *gin.Context) {
 	}
 
 	type gameResultsExtended struct {
-		GameID         uuid.UUID
-		TournamentID   uuid.UUID
-		CategoryID     uuid.UUID
-		GroupID        uuid.UUID
+		GameID         uint
+		TournamentID   uint
+		CategoryID     uint
+		GroupID        uint
 		GroupName      string
-		Team1ID        uuid.UUID
-		Team2ID        uuid.UUID
+		Team1ID        uint
+		Team2ID        uint
 		Team1Member1   string
-		Team1Member1ID uuid.UUID
+		Team1Member1ID uint
 		Team1Member2   string
-		Team1Member2ID uuid.UUID
+		Team1Member2ID uint
 		Team2Member1   string
-		Team1Member3ID uuid.UUID
+		Team1Member3ID uint
 		Team2Member2   string
-		Team1Member4ID uuid.UUID
+		Team1Member4ID uint
 		Team1Set1      int
 		Team1Set2      int
 		Team1Set3      int

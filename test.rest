@@ -41,8 +41,8 @@ content-type: application/json
 
 ### Users
 GET http://{{host}}/v1/catalogs/users
-?page=-1&limit=50&CategoryID=71055687-9697-4e71-8f12-4902011e048a
-content-type: application/json
+?page=-1&limit=50&ID=6
+
 ###
 GET http://{{host}}/v1/catalogs/clubs
 content-type: application/json
@@ -95,7 +95,7 @@ content-type: application/json
     "Active":"true"
 }
 ###
-GET http://{{host}}/v1/catalogs/categories?limit=-1
+GET http://{{host}}/v1/catalogs/categories?limit=-1&ID=1
 content-type: application/json
 
 ###

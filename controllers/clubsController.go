@@ -19,16 +19,17 @@ func PostClub(c *gin.Context) {
 		})
 		return
 	}
-
-	club := models.Club{
-		ID:          body.ID,
-		Name:        body.Name,
-		Description: body.Description,
-		Contact:     body.Contact,
-		Phone:       body.Phone,
-		Address:     body.Address,
-	}
-
+	club := body
+	/*
+		 	club := models.Club{
+				ID:         body.ID,
+				Name:        body.Name,
+				Description: body.Description,
+				Contact:     body.Contact,
+				Phone:       body.Phone,
+				Address:     body.Address,
+			}
+	*/
 	result := initializers.DB.Create(&club)
 	if result.Error != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -48,7 +49,7 @@ func GetClubs(c *gin.Context) {
 	offset := (intPage - 1) * intLimit
 
 	var clubs []models.Club
-	results := initializers.DB.Preload(clause.Associations).Limit(intLimit).Offset(offset).Find(&clubs)
+	results := initializers.DB.Debug().Preload(clause.Associations).Limit(intLimit).Offset(offset).Find(&clubs)
 	if results.Error != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"status": "error", "message": results.Error})
 		return

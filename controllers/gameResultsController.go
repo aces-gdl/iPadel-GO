@@ -6,12 +6,11 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 func PostGameResults(c *gin.Context) {
 	var body struct {
-		GameID        string
+		GameID        uint
 		Team1Set1     int
 		Team1Set2     int
 		Team1Set3     int
@@ -30,10 +29,8 @@ func PostGameResults(c *gin.Context) {
 		return
 	}
 
-	GameID, _ := uuid.Parse(body.GameID)
-
 	var gameResult = models.TournamentGameResult{
-		GameID:        GameID,
+		GameID:        body.GameID,
 		Team1Set1:     body.Team1Set1,
 		Team1Set2:     body.Team1Set2,
 		Team1Set3:     body.Team1Set3,

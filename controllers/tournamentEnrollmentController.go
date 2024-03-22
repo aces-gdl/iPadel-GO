@@ -8,15 +8,14 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 	"gorm.io/gorm/clause"
 )
 
 func PostSimulateEnrollment(c *gin.Context) {
 	var body struct {
-		CategoryID   uuid.UUID
+		CategoryID   uint
 		UserCount    string
-		TournamentID uuid.UUID
+		TournamentID uint
 	}
 
 	if c.Bind(&body) != nil {
@@ -46,16 +45,16 @@ func PostSimulateEnrollment(c *gin.Context) {
 		var teamMember2 models.User
 
 		team.Member1ID = users[i+1].ID
-		initializers.DB.First(&teamMember1, "id= ?", team.Member1ID)
-		if teamMember1.ID.String() == "" {
+		initializers.DB.Debug().First(&teamMember1, "id= ?", team.Member1ID)
+		if teamMember1.ID == 0 {
 			c.JSON(http.StatusBadRequest, gin.H{
 				"error": "Usuario 1 no encontrado... ",
 			})
 			return
 		}
 		team.Member2ID = users[i+counter].ID
-		initializers.DB.First(&teamMember2, "id= ?", team.Member2ID)
-		if teamMember2.ID.String() == "" {
+		initializers.DB.Debug().First(&teamMember2, "id= ?", team.Member2ID)
+		if teamMember2.ID == 0 {
 			c.JSON(http.StatusBadRequest, gin.H{
 				"error": "Usuario 2 no encontrado... ",
 			})
@@ -83,19 +82,4 @@ func PostSimulateEnrollment(c *gin.Context) {
 
 	}
 	c.JSON(http.StatusOK, gin.H{})
-}
-
-func GetEnrolledTeams(c *gin.Context) {
-	var tournamentID = c.DefaultQuery("TournamentID", "")
-	var categoryID = c.DefaultQuery("CategoryID", "")
-
-	var teams []models.TournamentTeam
-	results := initializers.DB.Where("tournament_id = ? AND category_id = ?", tournamentID, categoryID).Find(&teams)
-	if results.Error != nil {
-		c.JSON(http.StatusBadGateway, gin.H{"status": "error", "message": results.Error})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{"status": "success", "results": len(teams), "data": teams})
-
 }

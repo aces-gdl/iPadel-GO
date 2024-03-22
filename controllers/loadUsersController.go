@@ -10,11 +10,12 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
 )
 
 func PostLoadUsers(c *gin.Context) {
+	const PWD_DEFAULT = "APJ123"
+
 	fileHeader, err := c.FormFile("file")
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -23,12 +24,11 @@ func PostLoadUsers(c *gin.Context) {
 		return
 	}
 
-	CategoryID, _ := uuid.Parse(c.PostForm("CategoryID"))
-
-	PermissionID, _ := uuid.Parse(c.PostForm("PermissionID"))
+	CategoryID := c.PostForm("CategoryID")
+	PermissionID := c.PostForm("PermissionID")
 
 	var Category models.Category
-	result := initializers.DB.Where("ID = ?", CategoryID.String()).First(&Category)
+	result := initializers.DB.Where("ID = ?", CategoryID).First(&Category)
 	if result.Error != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": "Error buscando Categoria...",
@@ -60,7 +60,7 @@ func PostLoadUsers(c *gin.Context) {
 
 	// Create password default
 
-	hash, err := bcrypt.GenerateFromPassword([]byte("APJ123"), 10)
+	hash, err := bcrypt.GenerateFromPassword([]byte(PWD_DEFAULT), 10)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": "Fallo al convertir password a hash...",

@@ -5,7 +5,6 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 func GetGroups(c *gin.Context) {
@@ -13,9 +12,9 @@ func GetGroups(c *gin.Context) {
 	var categoryID = c.DefaultQuery("CategoryID", "")
 
 	type groupExtended struct {
-		TournamentID uuid.UUID
-		CategoryID   uuid.UUID
-		GroupID      uuid.UUID
+		TournamentID uint
+		CategoryID   uint
+		GroupID      uint
 		GroupNumber  int
 		Name         string
 		Name1        string

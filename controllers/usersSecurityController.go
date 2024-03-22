@@ -87,7 +87,7 @@ func Login(c *gin.Context) {
 
 	var user models.User
 	initializers.DB.First(&user, "email= ?", body.Email)
-	if user.ID.String() == "" {
+	if user.ID == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": "Correo o clave invalido ...",
 		})

@@ -30,7 +30,7 @@ func GetPermissions(c *gin.Context) {
 func PostPermissions(c *gin.Context) {
 	var body struct {
 		Description string
-		Active      string
+		Active      bool
 	}
 
 	x := c.Bind(&body)
@@ -40,10 +40,10 @@ func PostPermissions(c *gin.Context) {
 		})
 		return
 	}
-	active, _ := strconv.ParseBool(body.Active)
+	//active, _ := strconv.ParseBool(body.Active)
 	permission := models.Permission{
 		Description: body.Description,
-		Active:      active,
+		Active:      body.Active,
 	}
 
 	result := initializers.DB.Create(&permission)

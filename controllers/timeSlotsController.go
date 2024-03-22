@@ -5,21 +5,15 @@ import (
 	"iPadel-GO/initializers"
 	"iPadel-GO/models"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 func PostCreateTimeSlots(c *gin.Context) {
 
-	TournamentID, result := uuid.Parse(c.DefaultQuery("TournamentID", ""))
-	if result != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "TournamentID es requerido...",
-		})
-		return
-	}
+	TournamentID := c.GetUint("TournamentID")
 
 	var tournament models.Tournament
 	initializers.DB.Where("id = ?", TournamentID).First(&tournament)
@@ -67,13 +61,7 @@ func PostCreateTimeSlots(c *gin.Context) {
 }
 
 func GetTimeSlots(c *gin.Context) {
-	TournamentID, result := uuid.Parse(c.DefaultQuery("TournamentID", ""))
-	if result != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "TournamentID es requerido...",
-		})
-		return
-	}
+	TournamentID := c.GetUint("TournamentID")
 
 	//FilterDate, _ := time.ParseInLocation(time.RFC3339, c.DefaultQuery("FilterDate", ""), initializers.DB.NowFunc().Location())
 	FilterDate := c.DefaultQuery("FilterDate", "")
@@ -81,13 +69,12 @@ func GetTimeSlots(c *gin.Context) {
 	var tournament models.Tournament
 	initializers.DB.Where("id = ?", TournamentID).First(&tournament)
 
-	TournamentIDstr := c.DefaultQuery("TournamentID", "")
 	var timeSlotsRecords []models.TournamentTimeSlots
 
 	myQuery := `Select *
 				From tournament_time_slots 
 		 		where  1 = 1 
-					and tournament_id = '` + TournamentIDstr + `' 
+					and tournament_id = ` + strconv.FormatUint(uint64(TournamentID), 10) + ` 
 					and start_time  between '` + FilterDate + `T00:00:00.000-06:00' and '` + FilterDate + `T23:59:59.000-06:00'
 		 		Order By start_time, court_number`
 

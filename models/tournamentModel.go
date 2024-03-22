@@ -3,15 +3,11 @@ package models
 import (
 	"time"
 
-	"github.com/google/uuid"
 	"gorm.io/gorm"
 )
 
 type Tournament struct {
-	ID               uuid.UUID `gorm:"primary_key;type:uuid;default:gen_random_uuid()"`
-	CreatedAt        time.Time
-	UpdatedAt        time.Time
-	DeletedAt        gorm.DeletedAt `gorm:"index"`
+	gorm.Model
 	Description      string
 	StartDate        time.Time
 	EndDate          time.Time
@@ -19,8 +15,8 @@ type Tournament struct {
 	EndTime          time.Time
 	RoundrobinDays   int
 	PlayOffDays      int
-	HostClubID       uuid.UUID `gorm:"type:uuid;"`
-	Club             Club      `gorm:"foreignKey:HostClubID;references:ID"`
+	HostClubID       uint
+	Club             Club `gorm:"foreignKey:HostClubID;references:ID"`
 	GameDuration     int
 	RoundrobinCourts int
 	PlayoffCourts    int

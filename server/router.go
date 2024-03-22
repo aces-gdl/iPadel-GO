@@ -20,6 +20,7 @@ func NewRouter() *gin.Engine {
 
 	router.GET("/v1/catalogs/users", middleware.RequireAuth, controllers.GetUsers)
 	router.POST("/v1/catalogs/users", middleware.RequireAuth, controllers.PostUsers)
+	router.PUT("/v1/catalogs/users", middleware.RequireAuth, controllers.UpdateUsers)
 
 	router.POST("/v1/catalogs/club", middleware.RequireAuth, controllers.PostClub)
 	router.GET("/v1/catalogs/clubs", middleware.RequireAuth, controllers.GetClubs)
@@ -33,18 +34,28 @@ func NewRouter() *gin.Engine {
 	router.POST("/v1/catalogs/court", middleware.RequireAuth, controllers.PostCourts)
 	router.GET("/v1/catalogs/court", middleware.RequireAuth, controllers.GetCourts)
 	router.GET("/v1/catalogs/court/byclub", middleware.RequireAuth, controllers.GetCourtsByClub)
+
 	router.GET("/v1/catalogs/tournaments", middleware.RequireAuth, controllers.GetTournaments)
 	router.GET("/v1/catalogs/tournament", middleware.RequireAuth, controllers.GetTournament)
 	router.POST("/v1/catalogs/tournaments", middleware.RequireAuth, controllers.PostTournaments)
 
 	router.POST("/v1/tournament/simulateenrollment", middleware.RequireAuth, controllers.PostSimulateEnrollment)
 	router.POST("/v1/tournament/creategroups", middleware.RequireAuth, controllers.PostCreateGroups)
+
 	router.GET("/v1/tournament/getteams", middleware.RequireAuth, controllers.GetEnrolledTeams)
+
 	router.GET("/v1/tournament/getteamsbygroup", middleware.RequireAuth, controllers.GetGroups)
 
 	router.POST("/v1/tournament/createtimeslots", middleware.RequireAuth, controllers.PostCreateTimeSlots)
 	router.GET("/v1/tournament/gettimeslots", middleware.RequireAuth, controllers.GetTimeSlots)
+
 	router.GET("/v1/tournament/enrolledteams", middleware.RequireAuth, controllers.GetEnrolledTeams)
+	router.GET("/v1/tournament/isplayertaken", middleware.RequireAuth, controllers.GetIsPlayerTaken)
+	router.POST("/v1/tournament/enrolledteams", middleware.RequireAuth, controllers.PostEnrolledTeams)
+	router.PUT("/v1/tournament/enrolledteams", middleware.RequireAuth, controllers.PutEnrolledTeams)
+	router.POST("/v1/tournament/registerplayerintournament", middleware.RequireAuth, controllers.PostRegisterUserForTournament)
+	router.GET("/v1/tournament/registeredplayerbytournament", middleware.RequireAuth, controllers.GetRegisteredUsersByTournament)
+
 	router.GET("/v1/tournament/listgames", middleware.RequireAuth, controllers.GetGames)
 	router.GET("/v1/tournament/getroundrobinwinner", middleware.RequireAuth, controllers.GetRoundRobinWinner)
 

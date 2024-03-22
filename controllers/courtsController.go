@@ -18,13 +18,14 @@ func PostCourts(c *gin.Context) {
 		})
 		return
 	}
+	courts := body
 
-	courts := models.Court{
+	/* courts := models.Court{
 		ID:      body.ID,
 		Name:    body.Name,
 		Indoors: body.Indoors,
 		ClubID:  body.ClubID,
-	}
+	} */
 
 	result := initializers.DB.Create(&courts)
 	if result.Error != nil {

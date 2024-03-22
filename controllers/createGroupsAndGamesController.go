@@ -5,9 +5,9 @@ import (
 	"iPadel-GO/initializers"
 	"iPadel-GO/models"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 func PostCreateGroups(c *gin.Context) {
@@ -18,8 +18,8 @@ func PostCreateGroups(c *gin.Context) {
 	const groupSize int = 3
 
 	var body struct {
-		CategoryID   uuid.UUID
-		TournamentID uuid.UUID
+		CategoryID   uint
+		TournamentID uint
 	}
 
 	if c.Bind(&body) != nil {
@@ -32,7 +32,7 @@ func PostCreateGroups(c *gin.Context) {
 	var tournament models.Tournament
 
 	initializers.DB.First(&tournament, "id= ?", body.TournamentID)
-	if tournament.ID.String() == "" {
+	if tournament.ID == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": "Torneo no existe... ",
 		})
@@ -44,7 +44,7 @@ func PostCreateGroups(c *gin.Context) {
 	// Cambiar query para que los ordene por el mas alto de cada pareja y arrastre al compañero
 	sql := `select * 
 				from tournament_teams tt 
-				where tournament_id ='` + body.TournamentID.String() + `' and category_id ='` + body.CategoryID.String() + `' 
+				where tournament_id ='` + strconv.FormatUint(uint64(body.TournamentID), 10) + `' and category_id ='` + strconv.FormatUint(uint64(body.CategoryID), 10) + `' 
 				order by  (case when ranking1 > ranking2 then ranking1 else ranking2 end) desc;`
 	results := initializers.DB.Debug().Raw(sql).Find(&teams)
 	if results.Error != nil {
@@ -63,7 +63,7 @@ func PostCreateGroups(c *gin.Context) {
 		groupsCounterFinal = int(groupsCounter) + 1
 	}
 	groups := make([]struct {
-		ID      uuid.UUID
+		ID      uint
 		counter int
 	}, groupsCounterFinal)
 
@@ -162,7 +162,7 @@ func PostCreateGroups(c *gin.Context) {
 		}
 	}
 
-	CreateGames := func(TournamentID uuid.UUID, CategoryID uuid.UUID, teams []models.TournamentTeamByGroup) {
+	CreateGames := func(TournamentID uint, CategoryID uint, teams []models.TournamentTeamByGroup) {
 		var numOfTeams int = len(teams)
 		roleOfGames = nil
 

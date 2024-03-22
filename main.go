@@ -7,7 +7,8 @@ import (
 
 func init() {
 	initializers.LoadEnvVariables()
-	initializers.ConnectTODB()
+	//	initializers.ConnectTODBPostgres()
+	initializers.ConnectTODBMSSQL()
 	initializers.SyncDatabase()
 
 }

@@ -22,7 +22,6 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 func GetGames(c *gin.Context) {
@@ -31,29 +30,29 @@ func GetGames(c *gin.Context) {
 	var SearchStr = c.DefaultQuery("SearchStr", "")
 
 	type gameList struct {
-		TournamentID          uuid.UUID
-		CategoryID            uuid.UUID
-		TournamentGroupID     uuid.UUID
-		Team1ID               uuid.UUID
-		Team2ID               uuid.UUID
-		GameID                uuid.UUID
-		Team1Member1ID        uuid.UUID
+		TournamentID          uint
+		CategoryID            uint
+		TournamentGroupID     uint
+		Team1ID               uint
+		Team2ID               uint
+		GameID                uint
+		Team1Member1ID        uint
 		Team1Name1            string
 		Team1Ranking1         int
-		Team1Member2ID        uuid.UUID
+		Team1Member2ID        uint
 		Team1Name2            string
 		Team1Ranking2         int
-		Team2Member1ID        uuid.UUID
+		Team2Member1ID        uint
 		Team2Name1            string
 		Team2Ranking1         int
-		Team2Member2ID        uuid.UUID
+		Team2Member2ID        uint
 		Team2Name2            string
 		Team2Ranking2         int
 		GroupNumber           int
-		TournamentTimeSlotsID uuid.UUID
+		TournamentTimeSlotsID uint
 		CategoryColor         string
 		CategoryDescription   string
-		GameResultsID         uuid.UUID
+		GameResultsID         uint
 		Team1Set1             int
 		Team1Set2             int
 		Team1Set3             int
@@ -127,41 +126,25 @@ func PutAssignGamesToTimeSlots(c *gin.Context) {
 		return
 	}
 
-	TournamentID, err := uuid.Parse(body.TournamentID)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"status": "error", "message": err.Error})
-		return
-	}
-
 	// Validate TournamentID
 	var tournament models.Tournament
-	results := initializers.DB.First(&tournament, TournamentID)
+	results := initializers.DB.First(&tournament, body.TournamentID)
 	if results.Error != nil {
 		c.JSON(http.StatusNotFound, gin.H{"status": "error", "message": results.Error})
 		return
 	}
 
-	GameID, err := uuid.Parse(body.GameID)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"status": "error", "message": err.Error})
-		return
-	}
 	// Validate GameID
 	var game models.TournamentGames
-	results = initializers.DB.First(&game, GameID)
+	results = initializers.DB.First(&game, body.GameID)
 	if results.Error != nil {
 		c.JSON(http.StatusNotFound, gin.H{"status": "error", "message": results.Error})
 		return
 	}
 
-	TimeSlotID, err := uuid.Parse(body.TimeSlotID)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"status": "error", "message": err.Error})
-		return
-	}
 	// Validate TimeSlotsID
 	var timeSlot models.TournamentTimeSlots
-	results = initializers.DB.First(&timeSlot, TimeSlotID)
+	results = initializers.DB.First(&timeSlot, body.TimeSlotID)
 	if results.Error != nil {
 		c.JSON(http.StatusNotFound, gin.H{"status": "error", "message": results.Error})
 		return
@@ -187,9 +170,9 @@ func PutAssignGamesToTimeSlots(c *gin.Context) {
 
 func DeleteAssignGamesToTimeSlots(c *gin.Context) {
 	var body struct {
-		TournamentID string
-		GameID       string
-		TimeSlotID   string
+		TournamentID uint
+		GameID       uint
+		TimeSlotID   uint
 	}
 
 	err := c.Bind(&body)
@@ -200,54 +183,38 @@ func DeleteAssignGamesToTimeSlots(c *gin.Context) {
 		return
 	}
 
-	TournamentID, err := uuid.Parse(body.TournamentID)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"status": "error", "message": err.Error})
-		return
-	}
-
 	// Validate TournamentID
 	var tournament models.Tournament
-	results := initializers.DB.First(&tournament, TournamentID)
+	results := initializers.DB.First(&tournament, body.TournamentID)
 	if results.Error != nil {
 		c.JSON(http.StatusNotFound, gin.H{"status": "error", "message": results.Error})
 		return
 	}
 
-	GameID, err := uuid.Parse(body.GameID)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"status": "error", "message": err.Error})
-		return
-	}
 	// Validate GameID
 	var game models.TournamentGames
-	results = initializers.DB.First(&game, GameID)
+	results = initializers.DB.First(&game, body.GameID)
 	if results.Error != nil {
 		c.JSON(http.StatusNotFound, gin.H{"status": "error", "message": results.Error})
 		return
 	}
 
-	TimeSlotID, err := uuid.Parse(body.TimeSlotID)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"status": "error", "message": err.Error})
-		return
-	}
 	// Validate TimeSlotsID
 	var timeSlot models.TournamentTimeSlots
-	results = initializers.DB.First(&timeSlot, TimeSlotID)
+	results = initializers.DB.First(&timeSlot, body.TimeSlotID)
 	if results.Error != nil {
 		c.JSON(http.StatusNotFound, gin.H{"status": "error", "message": results.Error})
 		return
 	}
 
-	game.TournamentTimeSlotsID = uuid.Nil
+	game.TournamentTimeSlotsID = 0
 	results = initializers.DB.Save(&game)
 	if results.Error != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"status": "error", "message": results.Error})
 		return
 	}
 
-	timeSlot.GameID = uuid.Nil
+	timeSlot.GameID = 0
 	results = initializers.DB.Save(&timeSlot)
 	if results.Error != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"status": "error", "message": results.Error})
@@ -261,11 +228,11 @@ func DeleteAssignGamesToTimeSlots(c *gin.Context) {
 func PostCreateGame(c *gin.Context) {
 
 	var body struct {
-		TournamentID string
-		CategoryID   string
-		GroupID      string
-		Team1ID      string
-		Team2ID      string
+		TournamentID uint
+		CategoryID   uint
+		GroupID      uint
+		Team1ID      uint
+		Team2ID      uint
 		Comment      string
 	}
 
@@ -275,15 +242,10 @@ func PostCreateGame(c *gin.Context) {
 		return
 	}
 	var newGame models.TournamentGames
-	TournamentID, _ := uuid.Parse(body.TournamentID)
-	CategoryID, _ := uuid.Parse(body.CategoryID)
-	GroupID, _ := uuid.Parse(body.GroupID)
-	Team1ID, _ := uuid.Parse(body.Team1ID)
-	Team2ID, _ := uuid.Parse(body.Team2ID)
 
 	// Validate TournamentID
 	var tournament models.Tournament
-	results := initializers.DB.Debug().First(&tournament, TournamentID)
+	results := initializers.DB.Debug().First(&tournament, body.TournamentID)
 	if results.Error != nil {
 		c.JSON(http.StatusNotFound, gin.H{"status": "error", "message": "Tournament not found..."})
 		return
@@ -291,31 +253,31 @@ func PostCreateGame(c *gin.Context) {
 
 	//Validate Category
 	var category models.Category
-	results = initializers.DB.Debug().First(&category, CategoryID)
+	results = initializers.DB.Debug().First(&category, body.CategoryID)
 	if results.Error != nil {
 		c.JSON(http.StatusNotFound, gin.H{"status": "error", "message": "Category not found..."})
 		return
 	}
 
 	var Team1 models.TournamentTeam
-	results = initializers.DB.Debug().First(&Team1, Team1ID)
+	results = initializers.DB.Debug().First(&Team1, body.Team1ID)
 	if results.Error != nil {
 		c.JSON(http.StatusNotFound, gin.H{"status": "error", "message": "Team1 not found ..."})
 		return
 	}
 
 	var Team2 models.TournamentTeam
-	results = initializers.DB.Debug().First(&Team2, Team2ID)
+	results = initializers.DB.Debug().First(&Team2, body.Team2ID)
 	if results.Error != nil {
 		c.JSON(http.StatusNotFound, gin.H{"status": "error", "message": "Team2 not found ..."})
 		return
 	}
 
-	newGame.TournamentID = TournamentID
-	newGame.CategoryID = CategoryID
-	newGame.TournamentGroupID = GroupID
-	newGame.Team1ID = Team1ID
-	newGame.Team2ID = Team2ID
+	newGame.TournamentID = body.TournamentID
+	newGame.CategoryID = body.CategoryID
+	newGame.TournamentGroupID = body.GroupID
+	newGame.Team1ID = body.Team1ID
+	newGame.Team2ID = body.Team2ID
 	newGame.Comment = body.Comment
 	newGame.Active = true
 

@@ -1,19 +1,20 @@
-INSERT INTO public.categories (id,created_at,updated_at,deleted_at,description,color,"level",active) VALUES
-	 ('64c56c28-6c76-4c40-915e-6ed710832e96','2023-12-11 12:56:58.504845-06','2023-12-11 12:56:58.504845-06',NULL,'Tercera 3ra Varonil','',3,true),
-	 ('2fdc55da-641c-49d3-a728-7a729298333f','2023-12-11 12:57:51.411059-06','2023-12-11 12:57:51.411059-06',NULL,'Segunda 2da Varonil','',2,true),
-	 ('884a33bb-accc-44b2-bd91-815ff3e7948e','2023-12-11 12:58:16.008223-06','2023-12-11 12:58:16.008223-06',NULL,'Primera 1era Varonil','',1,true),
-	 ('4c01cac8-177f-4b5b-864a-c01f3e4e29ed','2023-12-11 12:59:17.80868-06','2023-12-11 12:59:17.80868-06',NULL,'Open  Varonil','',0,true),
-	 ('80d9769d-5bee-4023-9d8c-f3323782686d','2023-12-11 12:56:40.178621-06','2023-12-11 12:56:40.178621-06',NULL,'Cuarta 4ta Varonil','',4,true);
+-- Active: 1708704285327@@localhost@1433@ipadel@dbo
+INSERT INTO categories (id,created_at,updated_at,deleted_at,description,color,"level",active) VALUES
+	 ('1','2023-12-11 12:56:58.504845-06','2023-12-11 12:56:58.504845-06',NULL,'Tercera 3ra Varonil','',3,true),
+	 ('2','2023-12-11 12:57:51.411059-06','2023-12-11 12:57:51.411059-06',NULL,'Segunda 2da Varonil','',2,true),
+	 ('3','2023-12-11 12:58:16.008223-06','2023-12-11 12:58:16.008223-06',NULL,'Primera 1era Varonil','',1,true),
+	 ('4','2023-12-11 12:59:17.80868-06','2023-12-11 12:59:17.80868-06',NULL,'Open  Varonil','',0,true),
+	 ('5','2023-12-11 12:56:40.178621-06','2023-12-11 12:56:40.178621-06',NULL,'Cuarta 4ta Varonil','',4,true);
 INSERT INTO public.clubs (id,created_at,updated_at,deleted_at,name,description,contact,image_url,address,phone) VALUES
 	 ('091bf6d0-d9a1-44f9-980e-7f55e1610268','2023-12-10 16:46:58.360353-06','2023-12-10 16:46:58.360353-06',NULL,'Padel Sport Padel ZR','Padel Sport Zona Real','Santi','','Av.Aviacion','33 3234-3456'),
 	 ('372b9328-2267-409a-b582-1f696757432b','2023-12-10 16:47:55.595351-06','2023-12-10 16:47:55.595351-06',NULL,'Padel Sport Guadalupe','Padel SportGuadalupe','Nataly','','Av.Guadalupe','33 3234-3456'),
 	 ('0b9ad38b-2737-4672-b1ae-5714a3fc45dc','2023-12-10 16:48:24.091902-06','2023-12-10 16:48:24.091902-06',NULL,'Padel Warehouse','Padel Warehouse','Checo','','Zona real','33 3234-3456'),
 	 ('1fcf59a5-996b-4121-b37d-49080f6583fa','2023-12-10 16:49:08.155541-06','2023-12-10 16:49:08.155541-06',NULL,'Padel Rafaga','Padel Rafaga','Juanjo','','Tepatitlan de morelos','33 3234-3456');
 INSERT INTO public.permissions (id,created_at,updated_at,deleted_at,description,active) VALUES
-	 ('d912d91b-adca-49de-a6c2-710dc50c6e6e','2023-12-11 13:04:51.744815-06','2023-12-11 13:04:51.744815-06',NULL,'Admin',true),
-	 ('8194a4d1-2715-4cf7-a322-93d95708afd7','2023-12-11 13:05:02.513641-06','2023-12-11 13:05:02.513641-06',NULL,'Atleta',true),
-	 ('b8b98e98-278e-4d37-b281-8500ad9ac158','2023-12-11 13:05:12.06996-06','2023-12-11 13:05:12.06996-06',NULL,'Staff1',true),
-	 ('11d89bff-4254-4e3f-8d4f-c927c3a3dd83','2023-12-11 13:05:21.910132-06','2023-12-11 13:05:21.910132-06',NULL,'Staff2',true);
+	 ('1','2023-12-11 13:04:51.744815-06','2023-12-11 13:04:51.744815-06',NULL,'Admin',true),
+	 ('2','2023-12-11 13:05:02.513641-06','2023-12-11 13:05:02.513641-06',NULL,'Atleta',true),
+	 ('3','2023-12-11 13:05:12.06996-06','2023-12-11 13:05:12.06996-06',NULL,'Staff1',true),
+	 ('4','2023-12-11 13:05:21.910132-06','2023-12-11 13:05:21.910132-06',NULL,'Staff2',true);
 INSERT INTO public.tournament_games (id,created_at,updated_at,deleted_at,tournament_id,category_id,tournament_group_id,team1_id,team2_id,tournament_time_slots_id,active) VALUES
 	 ('2edcb9ae-b8df-4b31-8c5e-c15d0a6e32e8','2023-12-15 19:17:17.234853-06','2023-12-15 19:17:17.234853-06',NULL,'8196138d-9c50-4143-b786-7c3be6815435','64c56c28-6c76-4c40-915e-6ed710832e96','64a7013e-a372-48d9-aef9-79c0de38d899','f120404b-b4d1-42f5-b96d-f11b81e23c25','72bc9c18-3e09-4f68-943a-ccdf69ac32f4','00000000-0000-0000-0000-000000000000',false),
 	 ('4209e592-69f2-481a-a864-b3876366f871','2023-12-15 19:17:17.236391-06','2023-12-15 19:17:17.236391-06',NULL,'8196138d-9c50-4143-b786-7c3be6815435','64c56c28-6c76-4c40-915e-6ed710832e96','64a7013e-a372-48d9-aef9-79c0de38d899','f120404b-b4d1-42f5-b96d-f11b81e23c25','31496a77-a042-473e-a32f-37a713be0a56','00000000-0000-0000-0000-000000000000',false),
